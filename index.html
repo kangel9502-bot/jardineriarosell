@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)file:///C:/Users/jardi/Downloads/index_3.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rosell Jardineria</title>
+<meta name="theme-color" content="#3B6D11">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="file:///C:/Users/jardi/Downloads/manifest.json">
+<link rel="apple-touch-icon" href="./index_files/Whats-App-Image-2026-05-30-at-12-48-30.jpg">
+<link rel="stylesheet" href="./index_files/leaflet.css">
+<script src="./index_files/leaflet.js.descarga"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#f4f6f0;color:#1a1a1a;max-width:480px;margin:0 auto}
+:root{--g:#3B6D11;--gl:#EAF3DE;--gm:#639922;--bo:#e0e5d8}
+.screen{display:none;min-height:100vh}.screen.active{display:block}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--g);color:#fff;position:sticky;top:0;z-index:100}
+.tabs{display:flex;background:#fff;border-bottom:1px solid var(--bo);position:sticky;top:52px;z-index:99;overflow-x:auto}
+.tb{flex:1;min-width:52px;padding:9px 3px;font-size:10px;font-weight:500;color:#666;background:transparent;border:none;cursor:pointer;border-bottom:2px solid transparent;display:flex;flex-direction:column;align-items:center;gap:1px}
+.tb.on{color:var(--g);border-bottom:2px solid var(--gm)}
+.pg{padding:14px}
+.card{background:#fff;border:1px solid var(--bo);border-radius:12px;padding:14px;margin-bottom:10px}
+.card.cp{cursor:pointer}
+.badge{display:inline-block;font-size:11px;padding:3px 8px;border-radius:99px;font-weight:500}
+.bok{background:var(--gl);color:var(--g)}.bpe{background:#FAEEDA;color:#854F0B}.bex{background:#FEF3C7;color:#92400E}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:9px 14px;border:1px solid var(--bo);border-radius:10px;font-size:13px;font-weight:500;cursor:pointer;background:#fff;color:#1a1a1a}
+.bp{background:var(--g);color:#fff;border-color:var(--g)}.bf{width:100%;margin-top:8px}.bs{padding:5px 11px;font-size:12px;border-radius:8px}
+.bd{background:#fee2e2;color:#b91c1c;border-color:#fecaca}
+.inp{width:100%;padding:10px 12px;border:1px solid var(--bo);border-radius:10px;font-size:14px;background:#fff;margin-bottom:10px;outline:none}
+.inp:focus{border-color:var(--gm)}
+textarea.inp{resize:vertical;min-height:65px}
+.lbl{font-size:11px;font-weight:600;color:#666;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:5px;margin-top:10px;display:block}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.st{background:#fff;border:1px solid var(--bo);border-radius:12px;padding:12px}
+.sn{font-size:22px;font-weight:700;color:var(--g)}.sl{font-size:11px;color:#666;margin-top:2px}
+.chi{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--bo);cursor:pointer}
+.chi:last-child{border-bottom:none}
+.chb{width:22px;height:22px;border-radius:6px;border:2px solid var(--bo);flex-shrink:0}
+.chb.on{background:var(--g);border-color:var(--g)}
+.chb.on::after{content:'✓';color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.cht{font-size:13px;flex:1}
+.pg2{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px}
+.pa{aspect-ratio:1;border:2px dashed var(--bo);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;background:#fafafa;font-size:11px;color:#999;gap:4px}
+.pt{aspect-ratio:1;border-radius:10px;position:relative;overflow:hidden}
+.pt img{width:100%;height:100%;object-fit:cover}
+#rmap{width:100%;height:240px;border-radius:12px;margin-bottom:10px;border:1px solid var(--bo)}
+.mo{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:flex-end;justify-content:center}
+.mo.open{display:flex}
+.mb{background:#fff;border-radius:20px 20px 0 0;padding:20px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto}
+.mtt{font-size:16px;font-weight:700;margin-bottom:14px}
+.mc{float:right;background:none;border:none;font-size:20px;cursor:pointer;color:#999}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:#fff;padding:10px 20px;border-radius:99px;font-size:13px;z-index:2000;opacity:0;transition:opacity 0.3s}
+.toast.show{opacity:1}
+.pills{display:flex;gap:6px;overflow-x:auto;margin-bottom:12px;padding-bottom:2px}
+.pill{flex-shrink:0;padding:5px 11px;border-radius:99px;font-size:12px;border:1px solid var(--bo);background:#fff;cursor:pointer;color:#666}
+.pill.on{background:var(--g);color:#fff;border-color:var(--g)}
+.nw{position:relative;display:inline-flex}
+.nb{position:absolute;top:-4px;right:-4px;background:#dc2626;color:#fff;border-radius:50%;width:16px;height:16px;font-size:9px;display:flex;align-items:center;justify-content:center;font-weight:700}
+.cld{text-align:center;padding:5px 1px;border-radius:8px;cursor:pointer;font-size:12px;position:relative;min-height:30px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.cld.td{background:var(--g);color:#fff;font-weight:700}
+.cld.sel{background:var(--gl);border:1px solid var(--gm)}
+.dots{display:flex;gap:2px;margin-top:1px;justify-content:center}
+.dot{width:4px;height:4px;border-radius:50%}
+.dm{background:var(--gm)}.de{background:#F59E0B}.do{background:#64748B}
+.jc{background:#fff;border:1px solid var(--bo);border-radius:12px;margin-bottom:10px}
+.jch{padding:12px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bo)}
+.jcb{padding:10px 14px}
+.dbar{display:flex;gap:6px;overflow-x:auto;margin-bottom:12px;padding-bottom:4px}
+.dbtn{flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:7px 9px;border-radius:10px;cursor:pointer;min-width:42px;border:1.5px solid var(--bo);background:#fff}
+.dbtn.act{background:var(--g);border-color:var(--g)}
+.dbtn.tod{background:var(--gl);border-color:var(--gm)}
+.lw{padding:36px 24px;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+.rc{border:2px solid var(--bo);border-radius:12px;padding:14px;text-align:center;cursor:pointer;background:#fff}
+.rc.sel{border-color:var(--g);background:var(--gl)}
+.ctr{display:flex;align-items:center;gap:8px}
+.cbtn{width:28px;height:28px;border-radius:50%;border:1px solid var(--bo);background:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.cbtn.p{background:var(--g);color:#fff;border-color:var(--g)}
+.empty{text-align:center;padding:28px 20px;color:#999}
+</style>
+</head>
+<body>
+<div class="toast" id="toast"></div>
+
+<!-- LOGIN -->
+<div class="screen active" id="s-login">
+<div class="lw">
+  <div style="text-align:center;margin-bottom:16px"><img src="./index_files/Whats-App-Image-2026-05-30-at-12-48-30.jpg" alt="Rosell" style="max-width:200px;width:100%;border-radius:10px"></div>
+  <p style="text-align:center;font-size:13px;color:#666;margin-bottom:20px">Gestión de equipos y mantenimientos</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px">
+    <div class="rc sel" id="rc-a" onclick="selR(&#39;admin&#39;)"><div style="font-size:26px;margin-bottom:4px">👩‍💼</div><div style="font-size:14px;font-weight:600">Admin</div></div>
+    <div class="rc" id="rc-w" onclick="selR(&#39;worker&#39;)"><div style="font-size:26px;margin-bottom:4px">🌱</div><div style="font-size:14px;font-weight:600">Trabajador</div></div>
+  </div>
+  <span class="lbl">Correo electrónico</span>
+  <input class="inp" type="email" id="le" placeholder="correo@ejemplo.com">
+  <span class="lbl">Contraseña</span>
+  <input class="inp" type="password" id="lp" placeholder="••••••••">
+  <button class="btn bp bf" onclick="doLogin()" style="margin-top:4px">Entrar →</button>
+  <p id="lerr" style="color:#dc2626;font-size:12px;text-align:center;margin-top:8px;display:none"></p>
+</div>
+</div>
+
+<!-- ADMIN -->
+<div class="screen" id="s-admin">
+<div class="topbar">
+  <div><img src="./index_files/Whats-App-Image-2026-05-30-at-12-48-30.jpg" alt="Rosell" style="height:28px;border-radius:5px;background:#fff;padding:1px 4px"><div style="font-size:11px;opacity:0.8;margin-top:1px" id="ag">Panel admin</div></div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <div class="nw"><button style="background:rgba(255,255,255,0.2);border:none;border-radius:8px;padding:6px 8px;cursor:pointer;color:#fff;font-size:15px" onclick="aTab(&#39;alertas&#39;,null)">🔔</button><div class="nb" id="nc" style="display:none">0</div></div>
+    <div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff;cursor:pointer" onclick="doLogout()">AD</div>
+  </div>
+</div>
+<div class="tabs">
+  <button class="tb on" onclick="aTab(&#39;inicio&#39;,this)"><span>🏠</span>Inicio</button>
+  <button class="tb" onclick="aTab(&#39;clientes&#39;,this)"><span>👥</span>Clientes</button>
+  <button class="tb" onclick="aTab(&#39;calendario&#39;,this)"><span>📅</span>Cal.</button>
+  <button class="tb" onclick="aTab(&#39;equipo&#39;,this)"><span>📍</span>Equipo</button>
+  <button class="tb" onclick="aTab(&#39;trabajos&#39;,this)"><span>📋</span>Trabajos</button>
+  <button class="tb" onclick="aTab(&#39;alertas&#39;,this)"><span>🔔</span>Alertas</button>
+</div>
+
+<div id="at-inicio" class="pg">
+  <div class="sg">
+    <div class="st"><div class="sn" id="s1">0</div><div class="sl">Clientes</div></div>
+    <div class="st"><div class="sn" id="s2">0</div><div class="sl">Hoy</div></div>
+    <div class="st"><div class="sn" id="s3">0</div><div class="sl">Pendientes</div></div>
+    <div class="st"><div class="sn" id="s4">0</div><div class="sl">Alertas</div></div>
+  </div>
+  <div style="margin-bottom:10px"><button class="btn bf" style="margin-top:0;background:#FEF3C7;color:#92400E;border-color:#FDE68A" onclick="OM(&#39;modal-sf&#39;)">🔍 Buscar facturas</button></div>
+  <span class="lbl">Hoy — <span id="tdl"></span></span>
+  <div id="today-list"><div class="empty">📋<p>Sin eventos hoy</p></div></div>
+  <span class="lbl" style="margin-top:12px">Alertas activas</span>
+  <div id="alerts-prev"></div>
+</div>
+
+<div id="at-clientes" class="pg" style="display:none">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+    <span class="lbl" style="margin:0">Clientes</span>
+    <button class="btn bp bs" onclick="OM(&#39;modal-nc&#39;)">+ Nuevo</button>
+  </div>
+  <input class="inp" type="search" placeholder="🔍 Buscar..." oninput="cliS=this.value;loadCli()">
+  <div class="pills">
+    <div class="pill on" onclick="fCli(&#39;all&#39;,this)">Todos</div>
+    <div class="pill" onclick="fCli(&#39;Mensual&#39;,this)">📅 Mensuales</div>
+    <div class="pill" onclick="fCli(&#39;Semanal&#39;,this)">📅 Semanales</div>
+    <div class="pill" onclick="fCli(&#39;Quincenal&#39;,this)">📅 Quincenales</div>
+    <div class="pill" onclick="fCli(&#39;Puntual&#39;,this)">⚡ Puntuales</div>
+    <div class="pill" onclick="fCli(&#39;Otros&#39;,this)">🌳 Otros</div>
+  </div>
+  <div id="cl-list"><div class="empty">🌿<p>Sin clientes</p></div></div>
+</div>
+
+<div id="at-calendario" class="pg" style="display:none">
+  <div class="card" style="padding:12px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <button class="btn bs" onclick="chM(-1)">‹</button>
+      <span style="font-size:14px;font-weight:600" id="cal-lbl"></span>
+      <button class="btn bs" onclick="chM(1)">›</button>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:4px">
+      <span style="text-align:center;font-size:10px;font-weight:600;color:#999">L</span><span style="text-align:center;font-size:10px;font-weight:600;color:#999">M</span><span style="text-align:center;font-size:10px;font-weight:600;color:#999">X</span><span style="text-align:center;font-size:10px;font-weight:600;color:#999">J</span><span style="text-align:center;font-size:10px;font-weight:600;color:#999">V</span><span style="text-align:center;font-size:10px;font-weight:600;color:#999">S</span><span style="text-align:center;font-size:10px;font-weight:600;color:#999">D</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:8px" id="cal-grid"></div>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin:10px 0">
+    <span class="lbl" style="margin:0" id="cal-sel">Eventos del mes</span>
+    <button class="btn bp bs" onclick="OM(&#39;modal-ne&#39;)">+ Evento</button>
+  </div>
+  <div id="cal-evs"><div class="empty">📅<p>Selecciona un día</p></div></div>
+</div>
+
+<div id="at-equipo" class="pg" style="display:none">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+    <span class="lbl" style="margin:0">📍 Tiempo real</span>
+    <button class="btn bp bs" onclick="loadMap();showT(&#39;🔄 Actualizado&#39;)">🔄</button>
+  </div>
+  <div id="rmap"></div>
+  <div style="background:var(--gl);border-radius:10px;padding:8px 12px;margin-bottom:10px;font-size:11px;color:var(--g)">🟢 Activo &lt;10min · 🟡 &gt;10min · ⚫ Offline</div>
+  <span class="lbl">Estado equipo</span>
+  <div class="card" id="team-live"><div class="empty">👷<p>Sin activos</p></div></div>
+  <span class="lbl" style="margin-top:12px">⏱️ Jornadas hoy</span>
+  <div class="card" id="jorn-today"><div class="empty">⏱️<p>Sin jornadas</p></div></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin:12px 0 8px">
+    <span class="lbl" style="margin:0">Trabajadores</span>
+    <button class="btn bp bs" onclick="OM(&#39;modal-nw&#39;)">+ Añadir</button>
+  </div>
+  <div id="workers-list"></div>
+</div>
+
+<div id="at-trabajos" class="pg" style="display:none">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+    <span class="lbl" style="margin:0">📋 Trabajos realizados</span>
+    <input type="date" class="inp" id="tj-date" style="width:auto;margin:0;padding:6px 10px;font-size:12px" onchange="loadAdminTJ()">
+  </div>
+  <div class="pills">
+    <div class="pill on" onclick="fTJ(&#39;all&#39;,this)">Todos</div>
+    <div class="pill" onclick="fTJ(&#39;maint&#39;,this)">🔧 Manten.</div>
+    <div class="pill" onclick="fTJ(&#39;extra&#39;,this)">⭐ Extras</div>
+    <div class="pill" onclick="fTJ(&#39;otros&#39;,this)">🌳 Otros</div>
+    <div class="pill" onclick="fTJ(&#39;pending&#39;,this)">⏳ Pendientes</div>
+    <div class="pill" onclick="fTJ(&#39;done&#39;,this)">✅ Hechos</div>
+  </div>
+  <div id="tj-list"><div class="empty">📋<p>Selecciona una fecha</p></div></div>
+</div>
+<div id="at-alertas" class="pg" style="display:none">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+    <span class="lbl" style="margin:0">Alertas</span>
+    <button class="btn bp bs" onclick="OM(&#39;modal-na&#39;)">+ Nueva</button>
+  </div>
+  <div class="pills">
+    <div class="pill on" onclick="fAlt(&#39;all&#39;,this)">Todas</div>
+    <div class="pill" onclick="fAlt(&#39;obs&#39;,this)">👁️ Observ.</div>
+    <div class="pill" onclick="fAlt(&#39;riego&#39;,this)">💧 Riego</div>
+    <div class="pill" onclick="fAlt(&#39;plantas&#39;,this)">🌱 Plantas</div>
+    <div class="pill" onclick="fAlt(&#39;urgente&#39;,this)">🔴 Urgentes</div>
+  </div>
+  <div id="all-alerts"><div class="empty">🔔<p>Sin alertas</p></div></div>
+</div>
+</div>
+
+<!-- CLIENTE -->
+<div class="screen" id="s-client">
+<div class="topbar">
+  <button class="btn bs" style="background:rgba(255,255,255,0.2);color:#fff;border:none" onclick="goS(&#39;s-admin&#39;)">← Volver</button>
+  <div style="text-align:right"><div style="font-size:15px;font-weight:600" id="cn-t">Cliente</div><div style="font-size:11px;opacity:0.8" id="ca-t"></div></div>
+</div>
+<div class="tabs">
+  <button class="tb on" onclick="cTab(&#39;info&#39;,this)"><span>ℹ️</span>Info</button>
+  <button class="tb" onclick="cTab(&#39;mant&#39;,this)"><span>🔧</span>Manten.</button>
+  <button class="tb" onclick="cTab(&#39;extra&#39;,this)"><span>⭐</span>Extras</button>
+  <button class="tb" onclick="cTab(&#39;otros&#39;,this)"><span>🌳</span>Otros</button>
+  <button class="tb" onclick="cTab(&#39;fact&#39;,this)"><span>💰</span>Facturas</button>
+  <button class="tb" onclick="cTab(&#39;alt&#39;,this)"><span>🔔</span>Alertas</button>
+</div>
+<div id="ct-info" class="pg">
+  <div class="card" id="cl-info"></div>
+  <div id="cl-quota" style="margin-top:8px"></div>
+  <button class="btn bp bf" onclick="openEdit()">✏️ Editar datos</button>
+  <button class="btn bf" style="margin-top:6px" onclick="OM(&#39;modal-na&#39;)">🔔 Crear alerta</button>
+  <div id="cl-calls" style="margin-top:14px"></div>
+</div>
+<div id="ct-mant" class="pg" style="display:none">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+    <span class="lbl" style="margin:0">Mantenimientos</span>
+    <button class="btn bp bs" onclick="openNM()">+ Nuevo</button>
+  </div>
+  <div class="pills">
+    <div class="pill on" onclick="fM(&#39;all&#39;,this)">Todos</div>
+    <div class="pill" onclick="fM(&#39;pending&#39;,this)">⏳ Pend.</div>
+    <div class="pill" onclick="fM(&#39;done&#39;,this)">✅ Hechos</div>
+  </div>
+  <div id="mant-list"><div class="empty">🌿<p>Sin mantenimientos</p></div></div>
+</div>
+<div id="ct-extra" class="pg" style="display:none">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+    <span class="lbl" style="margin:0">Extras</span>
+    <button class="btn bp bs" onclick="OM(&#39;modal-nex&#39;)">+ Nuevo</button>
+  </div>
+  <div class="pills">
+    <div class="pill on" onclick="fE(&#39;all&#39;,this)">Todos</div>
+    <div class="pill" onclick="fE(&#39;pending&#39;,this)">⏳ Pend.</div>
+    <div class="pill" onclick="fE(&#39;done&#39;,this)">✅ Hechos</div>
+  </div>
+  <div id="extra-list"><div class="empty">⭐<p>Sin extras</p></div></div>
+</div>
+<div id="ct-otros" class="pg" style="display:none">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+    <span class="lbl" style="margin:0">Otros trabajos</span>
+    <button class="btn bp bs" onclick="OM(&#39;modal-no&#39;)">+ Nuevo</button>
+  </div>
+  <div id="otros-list"><div class="empty">🌳<p>Sin otros</p></div></div>
+</div>
+<div id="ct-fact" class="pg" style="display:none">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+    <span class="lbl" style="margin:0">Facturas</span>
+    <button class="btn bp bs" onclick="OM(&#39;modal-nf&#39;)">+ Nueva</button>
+  </div>
+  <div class="sg" style="margin-bottom:8px">
+    <div class="st"><div class="sn" id="f-tot" style="font-size:16px">0€</div><div class="sl">Cobrado</div></div>
+    <div class="st"><div class="sn" id="f-pe" style="font-size:16px;color:#854F0B">0€</div><div class="sl">Pendiente</div></div>
+  </div>
+  <div class="pills">
+    <div class="pill on" onclick="fF(&#39;all&#39;,this)">Todas</div>
+    <div class="pill" onclick="fF(&#39;paid&#39;,this)">✅ Pagadas</div>
+    <div class="pill" onclick="fF(&#39;pending&#39;,this)">⏳ Pend.</div>
+  </div>
+  <div id="fact-list"><div class="empty">💰<p>Sin facturas</p></div></div>
+</div>
+<div id="ct-alt" class="pg" style="display:none">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+    <span class="lbl" style="margin:0">Alertas cliente</span>
+    <button class="btn bp bs" onclick="OM(&#39;modal-na&#39;)">+ Nueva</button>
+  </div>
+  <div id="cl-alt-list"></div>
+</div>
+</div>
+
+<!-- MAINT DETAIL -->
+<div class="screen" id="s-maint">
+<div class="topbar">
+  <button class="btn bs" style="background:rgba(255,255,255,0.2);color:#fff;border:none" onclick="goS(&#39;s-client&#39;)">← Volver</button>
+  <div style="text-align:right"><div style="font-size:15px;font-weight:600" id="mt-b">Mantenimiento</div><div style="font-size:11px;opacity:0.8" id="ms-b"></div></div>
+</div>
+<div class="pg" id="maint-det"></div>
+</div>
+
+<!-- WORKER -->
+<div class="screen" id="s-worker">
+<div class="topbar">
+  <div><div style="font-size:15px;font-weight:600" id="wg">Buenos días 🌿</div><div style="font-size:11px;opacity:0.8" id="wd"></div></div>
+  <div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff;cursor:pointer" id="wa" onclick="doLogout()">W</div>
+</div>
+<div class="tabs">
+  <button class="tb on" onclick="wTab(&#39;t&#39;,this)"><span>📋</span>Trabajos</button>
+  <button class="tb" onclick="wTab(&#39;r&#39;,this)"><span>✅</span>Registrar</button>
+</div>
+<div id="wt-t" class="pg">
+  <!-- Jornada -->
+  <div class="card" id="j-card" style="margin-bottom:12px;text-align:center;padding:16px;border:2px solid var(--bo)">
+    <div style="font-size:13px;font-weight:600;color:#666;margin-bottom:6px">Control de jornada</div>
+    <div id="j-st" style="font-size:12px;color:#666;margin-bottom:10px">⚫ No iniciada</div>
+    <button id="j-btn" class="btn bp" style="width:100%;font-size:14px;padding:11px" onclick="togJ()">🟢 Iniciar jornada</button>
+    <div id="j-info" style="font-size:11px;color:#999;margin-top:6px"></div>
+  </div>
+  <!-- Week bar -->
+  <div class="dbar" id="week-bar"></div>
+  <!-- Day header -->
+  <div style="background:var(--g);color:#fff;border-radius:12px;padding:10px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center">
+    <div><div style="font-size:14px;font-weight:600" id="w-dt">Hoy</div><div style="font-size:11px;opacity:0.8" id="w-ds"></div></div>
+    <span id="w-dc" style="background:rgba(255,255,255,0.2);color:#fff;padding:3px 10px;border-radius:99px;font-size:12px">0 pend.</span>
+  </div>
+  <div class="pills">
+    <div class="pill on" onclick="fWJ(&#39;all&#39;,this)">Todos</div>
+    <div class="pill" onclick="fWJ(&#39;maint&#39;,this)">🔧 Mant.</div>
+    <div class="pill" onclick="fWJ(&#39;extra&#39;,this)">⭐ Extra</div>
+    <div class="pill" onclick="fWJ(&#39;otros&#39;,this)">🌳 Otros</div>
+    <div class="pill" onclick="fWJ(&#39;pending&#39;,this)">⏳ Pend.</div>
+    <div class="pill" onclick="fWJ(&#39;done&#39;,this)">✅ Hechos</div>
+  </div>
+  <div id="w-jobs"></div>
+  <!-- Worker alerts -->
+  <div id="w-alerts-box" style="display:none;margin-top:14px">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+      <span style="font-size:11px;font-weight:600;color:#666;text-transform:uppercase;letter-spacing:0.4px">🔔 Mensajes del admin</span>
+    </div>
+    <div id="w-alerts-list"></div>
+  </div>
+</div>
+<div id="wt-r" class="pg" style="display:none">
+  <span class="lbl">Cliente</span>
+  <select class="inp" id="reg-c"></select>
+  <span class="lbl">Tipo de trabajo</span>
+  <select class="inp" id="reg-t">
+    <option value="maint">🔧 Mantenimiento</option>
+    <option value="extra">⭐ Trabajo extra</option>
+    <option value="otros">🌳 Otros</option>
+  </select>
+  <!-- Work time display -->
+  <div id="work-time-box" style="display:none;background:var(--gl);border-radius:10px;padding:12px;margin-bottom:10px">
+    <div style="font-size:12px;font-weight:600;color:var(--g);margin-bottom:8px">⏱️ Control de tiempo</div>
+    <div style="display:flex;gap:8px">
+      <div style="flex:1;background:#fff;border-radius:8px;padding:8px;text-align:center">
+        <div style="font-size:10px;color:#666;font-weight:600">INICIO</div>
+        <div style="font-size:16px;font-weight:700;color:var(--g)" id="wt-start">--:--</div>
+      </div>
+      <div style="flex:1;background:#fff;border-radius:8px;padding:8px;text-align:center">
+        <div style="font-size:10px;color:#666;font-weight:600">FIN</div>
+        <div style="font-size:16px;font-weight:700;color:#b91c1c" id="wt-end">--:--</div>
+      </div>
+      <div style="flex:1;background:#fff;border-radius:8px;padding:8px;text-align:center">
+        <div style="font-size:10px;color:#666;font-weight:600">TOTAL</div>
+        <div style="font-size:14px;font-weight:700;color:#1e40af" id="wt-dur">--</div>
+      </div>
+    </div>
+  </div>
+  <span class="lbl">👥 ¿Quién trabajó hoy?</span>
+  <div class="card" style="margin-bottom:10px">
+    <div style="font-size:12px;color:#666;margin-bottom:8px">Pulsa + para cada persona:</div>
+    <div id="w-ctrs"></div>
+    <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--bo)">
+      <span style="font-size:13px;flex:1">➕ Nuevo sin usuario</span>
+      <div class="ctr">
+        <button class="cbtn" onclick="adjC(&#39;nuevo&#39;,-1)">−</button>
+        <span id="cnt-nuevo" style="font-size:14px;font-weight:700;color:var(--g);min-width:20px;text-align:center">0</span>
+        <button class="cbtn p" onclick="adjC(&#39;nuevo&#39;,1)">+</button>
+      </div>
+    </div>
+    <div id="nw-wrap" style="display:none;padding:6px 0 2px">
+      <input class="inp" id="nw-nm" placeholder="Nombre del trabajador nuevo..." style="margin-bottom:0;font-size:13px">
+    </div>
+  </div>
+  <span class="lbl">✅ Trabajos realizados</span>
+  <div class="card" id="reg-tasks">
+    <div class="chi" onclick="tC(this)"><div class="chb"></div><span class="cht">Trabajos generales</span></div>
+    <div class="chi" onclick="tC(this)"><div class="chb"></div><span class="cht">Orillas</span></div>
+    <div class="chi" onclick="tC(this)"><div class="chb"></div><span class="cht">Segar (corte de césped)</span></div>
+    <div class="chi" onclick="tC(this)"><div class="chb"></div><span class="cht">Poda</span></div>
+    <div class="chi" onclick="tC(this)"><div class="chb"></div><span class="cht">Recorte de valla</span></div>
+    <div class="chi" onclick="tC(this)"><div class="chb"></div><span class="cht">Recorte de setos y arbustos</span></div>
+    <div class="chi" onclick="tC(this)"><div class="chb"></div><span class="cht">Tratamiento fitosanitario — Fungicida</span></div>
+    <div class="chi" onclick="tC(this)"><div class="chb"></div><span class="cht">Tratamiento fitosanitario — Insecticida</span></div>
+    <div class="chi" onclick="tC(this)"><div class="chb"></div><span class="cht">Tratamiento fitosanitario — Herbicida</span></div>
+    <div class="chi" onclick="tC(this)"><div class="chb"></div><span class="cht">Riego y revisión del sistema</span></div>
+    <div class="chi" onclick="tC(this)"><div class="chb"></div><span class="cht">Abono y tratamiento del suelo</span></div>
+    <div class="chi" onclick="tC(this)"><div class="chb"></div><span class="cht">Plantación o trasplante</span></div>
+    <div class="chi" onclick="tC(this)"><div class="chb"></div><span class="cht">Limpieza y recogida de residuos</span></div>
+    <div class="chi" onclick="tC(this)"><div class="chb"></div><span class="cht">Obra / construcción jardín</span></div>
+    <div class="chi" onclick="tC(this);togOtros(this)"><div class="chb"></div><span class="cht">Otros</span></div>
+    <div id="otros-w" style="display:none;padding:8px 0 2px 32px">
+      <textarea class="inp" id="otros-txt" placeholder="Describe qué otros trabajos..." rows="2" style="margin-bottom:0;font-size:13px" onclick="event.stopPropagation()"></textarea>
+    </div>
+  </div>
+  <span class="lbl">🛒 ¿Falta comprar algo?</span>
+  <div class="card" id="buy-tasks">
+    <div class="chi" onclick="tC(this)"><div class="chb"></div><span class="cht">Comprar plantas</span></div>
+    <div class="chi" onclick="tC(this)"><div class="chb"></div><span class="cht">Comprar piezas de riego</span></div>
+    <div class="chi" onclick="tC(this)"><div class="chb"></div><span class="cht">Modificar tiempos de riego</span></div>
+    <div class="chi" onclick="tC(this)"><div class="chb"></div><span class="cht">Cambiar sistema de riego</span></div>
+    <div class="chi" onclick="tC(this);togBO(this)"><div class="chb"></div><span class="cht">Otro — especificar</span></div>
+    <div id="bo-w" style="display:none;padding:8px 0 2px 32px">
+      <textarea class="inp" id="bo-txt" placeholder="¿Qué hay que comprar?..." rows="2" style="margin-bottom:0;font-size:13px" onclick="event.stopPropagation()"></textarea>
+    </div>
+  </div>
+  <span class="lbl">📦 Material específico que falta (→ alerta al admin)</span>
+  <textarea class="inp" id="reg-mat" placeholder="Ej: 3 rosales, 2 temporizadores..."></textarea>
+  <span class="lbl">👁️ Observaciones (→ alerta automática al admin)</span>
+  <textarea class="inp" id="reg-obs" placeholder="Cualquier incidencia o nota importante..."></textarea>
+  <span class="lbl">📷 Fotos</span>
+  <div class="pg2" id="reg-photos"><div class="pa" onclick="addP()"><span style="font-size:22px;color:#ccc">📷</span><span>Añadir</span></div></div>
+  <input type="file" id="ph-inp" accept="image/*" style="display:none" onchange="handleP(event)">
+  <button class="btn bp bf" style="margin-top:14px" onclick="saveWork()">✅ Guardar trabajo</button>
+</div>
+</div>
+
+<!-- SUCCESS -->
+<div class="screen" id="s-ok">
+<div style="padding:50px 24px;text-align:center">
+  <div style="width:72px;height:72px;border-radius:50%;background:var(--gl);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:36px">✅</div>
+  <h2 style="font-size:20px;font-weight:700;margin-bottom:8px">¡Guardado!</h2>
+  <p style="color:#666;font-size:14px;margin-bottom:5px" id="ok-c"></p>
+  <p style="color:#999;font-size:12px;margin-bottom:5px" id="ok-i"></p>
+  <p style="color:var(--g);font-size:12px;font-weight:500;margin-bottom:28px" id="ok-a"></p>
+  <button class="btn bp" onclick="goS(&#39;s-worker&#39;)">← Volver</button>
+</div>
+</div>
+
+<!-- MODALS -->
+<div class="mo" id="modal-nc"><div class="mb">
+  <button class="mc" onclick="CM(&#39;modal-nc&#39;)">✕</button><div class="mtt">Nuevo cliente</div>
+  <span class="lbl">Nombre</span><input class="inp" id="nc-n" placeholder="Ej: Casa Martínez">
+  <span class="lbl">Dirección</span><input class="inp" id="nc-a" placeholder="C/ Mayor 5">
+  <span class="lbl">Teléfono</span><input class="inp" id="nc-p" type="tel" placeholder="+34 612 345 678">
+  <span class="lbl">Tipo de mantenimiento</span>
+  <select class="inp" id="nc-f"><option>Semanal</option><option>Quincenal</option><option selected="">Mensual</option><option>Trimestral</option><option>Puntual</option><option>Otros</option></select>
+  <span class="lbl">Frecuencia</span>
+  <select class="inp" id="nc-r" onchange="togDay(&#39;nc&#39;)">
+    <option value="">Sin recurrencia fija</option>
+    <option value="daily">Cada día</option>
+    <option value="weekly">Cada semana</option>
+    <option value="biweekly">Cada 2 semanas</option>
+    <option value="monthly">Cada mes (día fijo)</option>
+    <option value="quarterly">Cada 3 meses</option>
+  </select>
+  <div id="nc-dw" style="display:none"><span class="lbl">Día del mes</span><input class="inp" id="nc-d" type="number" placeholder="Ej: 15" min="1" max="31"></div>
+  <span class="lbl">💰 Cuota sin IVA (€)</span>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+    <input class="inp" id="nc-q" type="number" placeholder="80" min="0" step="0.01" oninput="calcIVA(&#39;nc&#39;)" style="margin-bottom:0">
+    <select class="inp" id="nc-iv" oninput="calcIVA(&#39;nc&#39;)" style="margin-bottom:0"><option value="0">Sin IVA</option><option value="10">10%</option><option value="21" selected="">21%</option></select>
+  </div>
+  <div id="nc-ivb" style="display:none;background:var(--gl);border-radius:8px;padding:8px 12px;font-size:13px;font-weight:600;color:var(--g);margin-bottom:10px"></div>
+  <span class="lbl">Notas</span><textarea class="inp" id="nc-no" placeholder="Tipo de jardín, plantas especiales..."></textarea>
+  <button class="btn bp bf" onclick="saveCli()">Guardar cliente</button>
+</div></div>
+
+<div class="mo" id="modal-ec"><div class="mb">
+  <button class="mc" onclick="CM(&#39;modal-ec&#39;)">✕</button><div class="mtt">✏️ Editar cliente</div>
+  <span class="lbl">Nombre</span><input class="inp" id="ec-n">
+  <span class="lbl">Dirección</span><input class="inp" id="ec-a">
+  <span class="lbl">Teléfono</span><input class="inp" id="ec-p" type="tel">
+  <span class="lbl">Tipo</span>
+  <select class="inp" id="ec-f"><option>Semanal</option><option>Quincenal</option><option>Mensual</option><option>Trimestral</option><option>Puntual</option><option>Otros</option></select>
+  <span class="lbl">Frecuencia</span>
+  <select class="inp" id="ec-r" onchange="togDay(&#39;ec&#39;)">
+    <option value="">Sin recurrencia</option><option value="daily">Cada día</option><option value="weekly">Cada semana</option>
+    <option value="biweekly">Cada 2 semanas</option><option value="monthly">Cada mes</option><option value="quarterly">Cada 3 meses</option>
+  </select>
+  <div id="ec-dw" style="display:none"><span class="lbl">Día del mes</span><input class="inp" id="ec-d" type="number" min="1" max="31"></div>
+  <span class="lbl">💰 Cuota sin IVA (€)</span>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+    <input class="inp" id="ec-q" type="number" placeholder="80" min="0" step="0.01" oninput="calcIVA(&#39;ec&#39;)" style="margin-bottom:0">
+    <select class="inp" id="ec-iv" oninput="calcIVA(&#39;ec&#39;)" style="margin-bottom:0"><option value="0">Sin IVA</option><option value="10">10%</option><option value="21" selected="">21%</option></select>
+  </div>
+  <div id="ec-ivb" style="display:none;background:var(--gl);border-radius:8px;padding:8px 12px;font-size:13px;font-weight:600;color:var(--g);margin-bottom:10px"></div>
+  <span class="lbl">Notas</span><textarea class="inp" id="ec-no"></textarea>
+  <button class="btn bp bf" onclick="updCli()">Guardar cambios</button>
+</div></div>
+
+<div class="mo" id="modal-ne"><div class="mb">
+  <button class="mc" onclick="CM(&#39;modal-ne&#39;)">✕</button><div class="mtt">Nuevo evento</div>
+  <span class="lbl">Tipo</span>
+  <select class="inp" id="ne-t"><option value="maint">🔧 Mantenimiento</option><option value="extra">⭐ Extra</option><option value="otros">🌳 Otros</option><option value="visit">🏠 Visita</option><option value="call">📞 Llamada</option></select>
+  <span class="lbl">Cliente</span><select class="inp" id="ne-c"></select>
+  <span class="lbl">Fecha</span><input class="inp" id="ne-d" type="date">
+  <span class="lbl">Trabajador</span><select class="inp" id="ne-w"></select>
+  <span class="lbl">Descripción</span><textarea class="inp" id="ne-de" placeholder="Detalla el trabajo..."></textarea>
+  <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:12px"><input type="checkbox" id="ne-al" checked="" style="width:18px;height:18px;accent-color:var(--g)">Crear alerta automática</label>
+  <button class="btn bp bf" onclick="saveEv()">Programar</button>
+</div></div>
+
+<div class="mo" id="modal-nm"><div class="mb">
+  <button class="mc" onclick="CM(&#39;modal-nm&#39;)">✕</button><div class="mtt">Programar mantenimiento</div>
+  <span class="lbl">Fecha</span><input class="inp" id="nm-d" type="date">
+  <span class="lbl">Trabajador</span><select class="inp" id="nm-w"></select>
+  <span class="lbl">Trabajos</span><textarea class="inp" id="nm-t" placeholder="Poda, riego..."></textarea>
+  <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin-bottom:12px"><input type="checkbox" id="nm-al" checked="" style="width:18px;height:18px;accent-color:var(--g)">Crear alerta</label>
+  <button class="btn bp bf" onclick="saveMA()">Programar</button>
+</div></div>
+
+<div class="mo" id="modal-nex"><div class="mb">
+  <button class="mc" onclick="CM(&#39;modal-nex&#39;)">✕</button><div class="mtt">⭐ Trabajo extra</div>
+  <span class="lbl">Descripción</span><textarea class="inp" id="nex-d" placeholder="Ej: Instalar riego..."></textarea>
+  <span class="lbl">Fecha</span><input class="inp" id="nex-f" type="date">
+  <span class="lbl">Trabajador</span><select class="inp" id="nex-w"></select>
+  <span class="lbl">Presupuesto</span><input class="inp" id="nex-b" placeholder="Ej: 250€">
+  <button class="btn bp bf" onclick="saveEx()">Guardar</button>
+</div></div>
+
+<div class="mo" id="modal-no"><div class="mb">
+  <button class="mc" onclick="CM(&#39;modal-no&#39;)">✕</button><div class="mtt">🌳 Otro trabajo</div>
+  <span class="lbl">Tipo</span>
+  <select class="inp" id="no-s"><option>Poda especial</option><option>Construcción jardín</option><option>Compra de plantas</option><option>Instalación riego</option><option>Tratamiento fitosanitario</option><option>Otro</option></select>
+  <span class="lbl">Descripción</span><textarea class="inp" id="no-d" placeholder="Detalla..."></textarea>
+  <span class="lbl">Fecha</span><input class="inp" id="no-f" type="date">
+  <span class="lbl">Trabajador</span><select class="inp" id="no-w"></select>
+  <span class="lbl">Presupuesto</span><input class="inp" id="no-b" placeholder="Ej: 150€">
+  <button class="btn bp bf" onclick="saveO()">Guardar</button>
+</div></div>
+
+<div class="mo" id="modal-nf"><div class="mb">
+  <button class="mc" onclick="CM(&#39;modal-nf&#39;)">✕</button><div class="mtt">💰 Nueva factura</div>
+  <span class="lbl">Concepto</span>
+  <select class="inp" id="nf-c"><option>Mantenimiento regular</option><option>Trabajo extra</option><option>Poda especial</option><option>Construcción jardín</option><option>Instalación riego</option><option>Compra plantas</option><option>Otro</option></select>
+  <span class="lbl">Descripción</span><textarea class="inp" id="nf-d" placeholder="Detalla el trabajo..."></textarea>
+  <span class="lbl">Importe sin IVA (€)</span>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+    <input class="inp" id="nf-b" type="number" placeholder="100" min="0" step="0.01" oninput="calcF()" style="margin-bottom:0">
+    <select class="inp" id="nf-iv" oninput="calcF()" style="margin-bottom:0"><option value="0">Sin IVA</option><option value="10">10%</option><option value="21" selected="">21%</option></select>
+  </div>
+  <div id="nf-tb" style="display:none;background:var(--gl);border-radius:8px;padding:10px;margin-bottom:10px;font-size:13px;color:var(--g);font-weight:600"></div>
+  <span class="lbl">Fecha</span><input class="inp" id="nf-f" type="date">
+  <span class="lbl">Estado</span>
+  <select class="inp" id="nf-s"><option value="paid">✅ Pagada</option><option value="pending">⏳ Pendiente</option></select>
+  <span class="lbl">Método de pago</span>
+  <select class="inp" id="nf-m"><option>Efectivo</option><option>Transferencia</option><option>Bizum</option><option>Tarjeta</option><option>Pendiente</option></select>
+  <span class="lbl">Notas</span><textarea class="inp" id="nf-no" placeholder="Notas..."></textarea>
+  <button class="btn bp bf" onclick="saveFact()">Guardar factura</button>
+</div></div>
+
+<div class="mo" id="modal-sf"><div class="mb">
+  <button class="mc" onclick="CM(&#39;modal-sf&#39;)">✕</button><div class="mtt">🔍 Buscar facturas</div>
+  <span class="lbl">Cliente</span><input class="inp" id="sf-c" placeholder="Nombre del cliente...">
+  <span class="lbl">Palabras clave</span><input class="inp" id="sf-k" placeholder="Ej: poda, riego, mayo...">
+  <span class="lbl">Estado</span>
+  <select class="inp" id="sf-s"><option value="all">Todas</option><option value="paid">✅ Pagadas</option><option value="pending">⏳ Pendientes</option></select>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+    <div><span class="lbl" style="margin-top:0">Desde</span><input class="inp" id="sf-fd" type="date" style="margin-bottom:0"></div>
+    <div><span class="lbl" style="margin-top:0">Hasta</span><input class="inp" id="sf-ft" type="date" style="margin-bottom:0"></div>
+  </div>
+  <button class="btn bp bf" onclick="searchF()">🔍 Buscar</button>
+  <div id="sf-res" style="margin-top:12px"></div>
+</div></div>
+
+<div class="mo" id="modal-na"><div class="mb">
+  <button class="mc" onclick="CM(&#39;modal-na&#39;)">✕</button><div class="mtt">🔔 Nueva alerta</div>
+  <span class="lbl">Tipo</span>
+  <select class="inp" id="na-t">
+    <option value="obs">👁️ Observación trabajador</option>
+    <option value="riego">💧 Cambiar riego</option>
+    <option value="plantas">🌱 Comprar plantas</option>
+    <option value="piezas">🔧 Comprar piezas</option>
+    <option value="urgente">🔴 Urgente</option>
+    <option value="otros">🟢 Recordatorio</option>
+  </select>
+  <span class="lbl">Descripción</span><input class="inp" id="na-d" placeholder="Ej: Cambiar temporizador">
+  <span class="lbl">Fecha límite</span><input class="inp" id="na-f" type="date">
+  <button class="btn bp bf" onclick="saveAlt()">Guardar</button>
+</div></div>
+
+<div class="mo" id="modal-nw"><div class="mb">
+  <button class="mc" onclick="CM(&#39;modal-nw&#39;)">✕</button><div class="mtt">Añadir trabajador</div>
+  <span class="lbl">Nombre</span><input class="inp" id="nw-n" placeholder="Ej: Carlos García">
+  <span class="lbl">Email</span><input class="inp" id="nw-e" type="email" placeholder="carlos@email.com">
+  <span class="lbl">Contraseña</span><input class="inp" id="nw-p" type="password" placeholder="Mínimo 6 caracteres">
+  <span class="lbl">Teléfono</span><input class="inp" id="nw-t" type="tel" placeholder="+34 612 345 678">
+  <button class="btn bp bf" onclick="saveW()">Crear trabajador</button>
+</div></div>
+
+<script>
+// Bridge functions - available immediately for HTML onclick handlers
+var _appReady=false;
+function selR(r){
+  document.getElementById('rc-a').classList.toggle('sel',r==='admin');
+  document.getElementById('rc-w').classList.toggle('sel',r==='worker');
+}
+function doLogin(){
+  if(window._doLogin){window._doLogin();}
+  else{
+    var e=document.getElementById('le').value.trim();
+    var p=document.getElementById('lp').value;
+    var err=document.getElementById('lerr');
+    if(!e||!p){err.textContent='Rellena todos los campos';err.style.display='block';return;}
+    err.style.display='none';
+    err.textContent='Cargando...';err.style.display='block';err.style.color='#666';
+    setTimeout(function(){if(window._doLogin)window._doLogin();else{err.textContent='Error de conexión. Recarga la página.';err.style.color='#dc2626';}},2000);
+  }
+}
+function doLogout(){window._doLogout&&window._doLogout();}
+function aTab(t,b){window._aTab&&window._aTab(t,b);}
+function cTab(t,b){window._cTab&&window._cTab(t,b);}
+function wTab(t,b){window._wTab&&window._wTab(t,b);}
+function OM(id){window._OM&&window._OM(id);}
+function CM(id){window._CM&&window._CM(id);}
+function tC(item){window._tC&&window._tC(item);}
+function togOtros(item){window._togOtros&&window._togOtros(item);}
+function togBO(item){window._togBO&&window._togBO(item);}
+function togDay(p){window._togDay&&window._togDay(p);}
+function calcIVA(p){window._calcIVA&&window._calcIVA(p);}
+function calcF(){window._calcF&&window._calcF();}
+function adjC(n,d){window._adjC&&window._adjC(n,d);}
+function togJ(){window._togJ&&window._togJ();}
+function fCli(f,b){window._fCli&&window._fCli(f,b);}
+function fM(f,b){window._fM&&window._fM(f,b);}
+function fE(f,b){window._fE&&window._fE(f,b);}
+function fF(f,b){window._fF&&window._fF(f,b);}
+function fAlt(f,b){window._fAlt&&window._fAlt(f,b);}
+function fWJ(f,b){window._fWJ&&window._fWJ(f,b);}
+function fSeg(f,b){window._fSeg&&window._fSeg(f,b);}
+function openEdit(){window._openEdit&&window._openEdit();}
+function openNM(){window._openNM&&window._openNM();}
+function saveCli(){window._saveCli&&window._saveCli();}
+function updCli(){window._updCli&&window._updCli();}
+function saveEv(){window._saveEv&&window._saveEv();}
+function saveMA(){window._saveMA&&window._saveMA();}
+function saveEx(){window._saveEx&&window._saveEx();}
+function saveO(){window._saveO&&window._saveO();}
+function saveFact(){window._saveFact&&window._saveFact();}
+function saveAlt(){window._saveAlt&&window._saveAlt();}
+function saveSeg(){window._saveSeg&&window._saveSeg();}
+function saveW(){window._saveW&&window._saveW();}
+function saveWork(){window._saveWork&&window._saveWork();}
+function searchF(){window._searchF&&window._searchF();}
+function markED(id){window._markED&&window._markED(id);}
+function markDone(id){window._markDone&&window._markDone(id);}
+function markE(id){window._markE&&window._markE(id);}
+function markO(id){window._markO&&window._markO(id);}
+function markFP(id){window._markFP&&window._markFP(id);}
+function resAlt(id){window._resAlt&&window._resAlt(id);}
+function delAlt(id){window._delAlt&&window._delAlt(id);}
+function delEv(id){window._delEv&&window._delEv(id);}
+function delF(id){window._delF&&window._delF(id);}
+function delW(id){window._delW&&window._delW(id);}
+function addP(){window._addP&&window._addP();}
+function delP(i){window._delP&&window._delP(i);}
+function handleP(e){window._handleP&&window._handleP(e);}
+function openCli(id){window._openCli&&window._openCli(id);}
+function openM(id){window._openM&&window._openM(id);}
+function chM(d){window._chM&&window._chM(d);}
+function selDay(d){window._selDay&&window._selDay(d);}
+function loadMap(){window._loadMap&&window._loadMap();}
+function showT(m){window._showT&&window._showT(m);}
+function goReg2(c,t,e){window._goReg2&&window._goReg2(c,t,e);}
+function startWork(id){window._startWork&&window._startWork(id);}
+function endWork(id){window._endWork&&window._endWork(id);}
+function resSeg(id){window._resSeg&&window._resSeg(id);}
+function delSeg(id){window._delSeg&&window._delSeg(id);}
+function fTJ(f,b){window._fTJ&&window._fTJ(f,b);}
+function loadAdminTJ(){window.loadAdminTJ&&window.loadAdminTJ();}
+</script>
+<script type="module">
+// Firebase modular SDK
+const FB={apiKey:"AIzaSyBuoJ7HYalQC33e26Vpt4lNPO6eiioVJew",authDomain:"roselljardineria.firebaseapp.com",projectId:"roselljardineria",storageBucket:"roselljardineria.firebasestorage.app",messagingSenderId:"555573815448",appId:"1:555573815448:web:7a55e7e580041a51cd48ed"};
+const app=initializeApp(FB),auth=getAuth(app),db=getFirestore(app);
+let CU=null,CID=null,CD=null,GPS=null,photos=[],gpsW=null,map=null,markers={};
+let calY=new Date().getFullYear(),calM=new Date().getMonth(),calD=null;
+let cliF='all',cliS='',mF='all',eF='all',aF='all',fF2='all',wJF='all';
+let jActive=false,jStart=null,wJobs=[],selD=new Date().toISOString().split('T')[0];
+let ctrs={};
+
+// TOAST
+window._showT=window.showT=(m)=>{const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);};
+// MODALS
+window._OM=window.OM=(id)=>{if(id==='modal-nf'){const d=document.getElementById('nf-f');if(d&&!d.value)d.value=new Date().toISOString().split('T')[0];}document.getElementById(id).classList.add('open');};
+window._CM=window.CM=(id)=>document.getElementById(id).classList.remove('open');
+document.querySelectorAll('.mo').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');}));
+// HELPERS
+window._tC=window.tC=(item)=>{const c=item.querySelector('.chb');c.classList.toggle('on');};
+window._togOtros=window.togOtros=(item)=>{const w=document.getElementById('otros-w');if(w)w.style.display=item.querySelector('.chb').classList.contains('on')?'block':'none';};
+window._togBO=window.togBO=(item)=>{const w=document.getElementById('bo-w');if(w)w.style.display=item.querySelector('.chb').classList.contains('on')?'block':'none';};
+window._togDay=window.togDay=(p)=>{const v=document.getElementById(p+'-r')?.value;const dw=document.getElementById(p+'-dw');if(dw)dw.style.display=v==='monthly'?'block':'none';};
+window._calcIVA=window.calcIVA=(p)=>{const b=parseFloat(document.getElementById(p+'-q')?.value)||0,iv=parseFloat(document.getElementById(p+'-iv')?.value)||0,box=document.getElementById(p+'-ivb');if(!box)return;if(b>0&&iv>0){const ia=b*iv/100;box.textContent=`Base: ${b.toFixed(2)}€ + IVA ${iv}%: ${ia.toFixed(2)}€ = Total: ${(b+ia).toFixed(2)}€`;box.style.display='block';}else box.style.display='none';};
+window._calcF=window.calcF=()=>{const b=parseFloat(document.getElementById('nf-b')?.value)||0,iv=parseFloat(document.getElementById('nf-iv')?.value)||0,box=document.getElementById('nf-tb');if(!box)return;if(b>0){const ia=b*iv/100;box.textContent=iv>0?`Base: ${b.toFixed(2)}€ + IVA: ${ia.toFixed(2)}€ = Total: ${(b+ia).toFixed(2)}€`:`Total: ${b.toFixed(2)}€ (sin IVA)`;box.style.display='block';}else box.style.display='none';};
+window._adjC=window.adjC=(nm,d)=>{if(!ctrs[nm])ctrs[nm]=0;ctrs[nm]=Math.max(0,ctrs[nm]+d);const k=nm.replace(/\s/g,'_');const el=document.getElementById('cnt-'+k);if(el)el.textContent=ctrs[nm];if(nm==='nuevo'){const w=document.getElementById('nw-wrap');if(w)w.style.display=ctrs[nm]>0?'block':'none';}};
+// NAV
+window.goS=(id)=>{document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);};
+window._selR=window.selR=(r)=>{document.getElementById('rc-a').classList.toggle('sel',r==='admin');document.getElementById('rc-w').classList.toggle('sel',r==='worker');};
+window._aTab=window.aTab=(tab,btn)=>{
+  ['inicio','clientes','calendario','equipo','trabajos','alertas'].forEach(t=>{const el=document.getElementById('at-'+t);if(el)el.style.display=t===tab?'block':'none';});
+  document.querySelectorAll('#s-admin .tb').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');
+  if(tab==='calendario'){calD=null;renderCal();loadMonthE();}
+  if(tab==='trabajos'){
+    const d=document.getElementById('tj-date');
+    if(d&&!d.value)d.value=new Date().toISOString().split('T')[0];
+    loadAdminTJ();
+  }
+  if(tab==='equipo'){setTimeout(()=>{loadMap();loadJorn();},100);}
+  if(tab==='alertas')loadAllAlerts();
+  if(tab==='clientes')loadCli();
+};
+window._cTab=window.cTab=(tab,btn)=>{
+  ['info','mant','extra','otros','fact','alt'].forEach(t=>{const el=document.getElementById('ct-'+t);if(el)el.style.display=t===tab?'block':'none';});
+  document.querySelectorAll('#s-client .tb').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');
+  if(tab==='mant')loadMants();if(tab==='extra')loadExtras();if(tab==='otros')loadOtros();
+  if(tab==='fact')loadFacts();if(tab==='alt')loadCliAlerts();
+};
+window._wTab=window.wTab=(tab,btn)=>{
+  document.getElementById('wt-t').style.display=tab==='t'?'block':'none';
+  document.getElementById('wt-r').style.display=tab==='r'?'block':'none';
+  document.querySelectorAll('#s-worker .tb').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');
+};
+// AUTH
+window._doLogin=window.doLogin=async()=>{
+  const e=document.getElementById('le').value.trim(),p=document.getElementById('lp').value;
+  const err=document.getElementById('lerr');err.style.display='none';
+  if(!e||!p){err.textContent='Rellena todos los campos';err.style.display='block';return;}
+  try{await signInWithEmailAndPassword(auth,e,p);}catch{err.textContent='Email o contraseña incorrectos';err.style.display='block';}
+};
+window._doLogout=window.doLogout=async()=>{if(gpsW)navigator.geolocation.clearWatch(gpsW);await signOut(auth);goS('s-login');};
+onAuthStateChanged(auth,async u=>{if(u){CU=u;const a=await getDoc(doc(db,'admins',u.uid));if(a.exists())loadAdmin();else loadWorker();}});
+// JORNADA
+async function checkJ(){try{const s=await getDoc(doc(db,'locations',CU.uid));if(s.exists()&&s.data().active&&s.data().jStart){jActive=true;jStart=s.data().jStart.toDate();startGPS();updJUI(true);}}catch(e){}}
+function startGPS(){if(gpsW||!navigator.geolocation)return;gpsW=navigator.geolocation.watchPosition(async p=>{GPS=`${p.coords.latitude.toFixed(5)}, ${p.coords.longitude.toFixed(5)}`;await setDoc(doc(db,'locations',CU.uid),{uid:CU.uid,email:CU.email,lat:p.coords.latitude,lng:p.coords.longitude,active:true,updatedAt:serverTimestamp()},{merge:true});},()=>{},{enableHighAccuracy:true,maximumAge:60000,timeout:15000});}
+function updJUI(on){const btn=document.getElementById('j-btn'),st=document.getElementById('j-st'),card=document.getElementById('j-card'),info=document.getElementById('j-info');if(!btn)return;if(on){btn.textContent='🔴 Terminar jornada';btn.style.background='#dc2626';btn.style.borderColor='#dc2626';if(st){st.textContent='🟢 En curso — GPS activo';st.style.color='var(--g)';}if(card)card.style.borderColor='var(--g)';if(jStart&&info)info.textContent=`Inicio: ${jStart.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'})}`;}else{btn.textContent='🟢 Iniciar jornada';btn.style.background='var(--g)';btn.style.borderColor='var(--g)';if(st){st.textContent='⚫ No iniciada';st.style.color='#666';}if(card)card.style.borderColor='var(--bo)';if(info)info.textContent='';}}
+window._togJ=window.togJ=async()=>{
+  if(!jActive){if(!navigator.geolocation){showT('GPS no disponible');return;}jStart=new Date();jActive=true;
+    await setDoc(doc(db,'locations',CU.uid),{uid:CU.uid,email:CU.email,active:true,jStart:serverTimestamp(),updatedAt:serverTimestamp()},{merge:true});
+    const ws=await getDocs(query(collection(db,'workers'),where('email','==',CU.email)));let wn=CU.email;ws.forEach(d=>{wn=d.data().name;});
+    await addDoc(collection(db,'jornadas'),{uid:CU.uid,email:CU.email,workerName:wn,start:serverTimestamp(),end:null,date:new Date().toISOString().split('T')[0],active:true});
+    startGPS();updJUI(true);showT('🟢 Jornada iniciada');
+  }else{if(!confirm('¿Terminar jornada?'))return;jActive=false;if(gpsW){navigator.geolocation.clearWatch(gpsW);gpsW=null;}
+    await setDoc(doc(db,'locations',CU.uid),{active:false,updatedAt:serverTimestamp()},{merge:true});
+    const jS=await getDocs(query(collection(db,'jornadas'),where('uid','==',CU.uid),where('active','==',true)));
+    jS.forEach(async d=>{await updateDoc(doc(db,'jornadas',d.id),{end:serverTimestamp(),active:false,minutes:Math.floor((new Date()-jStart)/60000)});});
+    jStart=null;updJUI(false);showT('🔴 Jornada terminada');}
+};
+// MAP
+window._loadMap=window.loadMap=async()=>{
+  if(!map){map=L.map('rmap').setView([41.3851,2.1734],12);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap'}).addTo(map);}
+  const snap=await getDocs(collection(db,'locations')),ws=await getDocs(collection(db,'workers'));
+  const wn={};ws.forEach(d=>{wn[d.data().email]=d.data().name;});
+  Object.values(markers).forEach(m=>map.removeLayer(m));markers={};
+  let lh='',mh='';let hasA=false;
+  snap.forEach(d=>{const l=d.data(),n=wn[l.email]||l.email||'?';
+    const now=new Date(),up=l.updatedAt?.toDate?.()||new Date(0),min=Math.floor((now-up)/60000);
+    const isA=l.active&&min<30,isW=l.active&&min>=10&&min<30;
+    if(isA&&l.lat&&l.lng){hasA=true;const ic=L.divIcon({html:`<div style="background:${isW?'#f59e0b':'#22c55e'};color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3)">${n.charAt(0)}</div>`,className:'',iconSize:[32,32],iconAnchor:[16,16]});const mk=L.marker([l.lat,l.lng],{icon:ic}).addTo(map);mk.bindPopup(`<b>${n}</b><br><small>${min===0?'Ahora':'Hace '+min+' min'}</small>`);markers[d.id]=mk;map.setView([l.lat,l.lng],14);}
+    lh+=`<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--bo)"><div style="width:11px;height:11px;border-radius:50%;background:${!l.active?'#9ca3af':isW?'#f59e0b':'#22c55e'};flex-shrink:0"></div><div style="flex:1"><div style="font-size:13px;font-weight:600">${n}</div><div style="font-size:11px;color:#666">${!l.active?'Desconectado':min===0?'Ahora':'Hace '+min+' min'}${l.lat&&isA?' · 📍 '+l.lat.toFixed(4)+', '+l.lng.toFixed(4):''}</div>${isA&&l.lat?`<a href="https://www.google.com/maps/dir/?api=1&destination=${l.lat},${l.lng}" target="_blank" style="display:inline-flex;align-items:center;gap:4px;margin-top:5px;padding:4px 10px;background:var(--g);color:#fff;border-radius:8px;font-size:11px;text-decoration:none">🚗 Cómo llegar</a>`:''}</div><span class="badge ${isA?'bok':'bot'}">${isA?'🟢':'⚫'}</span></div>`;
+  });
+  ws.forEach(d=>{const w=d.data();mh+=`<div class="card" style="margin-bottom:8px"><div style="display:flex;align-items:center;justify-content:space-between"><div><div style="font-size:14px;font-weight:600">${w.name}</div><div style="font-size:12px;color:#666">${w.email}</div></div><button class="btn bs bd" onclick="delW('${d.id}')">Eliminar</button></div></div>`;});
+  if(!hasA&&map)map.setView([41.3851,2.1734],12);
+  document.getElementById('team-live').innerHTML=lh||'<div class="empty">👷<p>Sin activos</p></div>';
+  document.getElementById('workers-list').innerHTML=mh;
+  setTimeout(()=>{if(map)map.invalidateSize();},300);
+};
+window.loadJorn=async()=>{
+  const today=new Date().toISOString().split('T')[0];
+  const snap=await getDocs(query(collection(db,'jornadas'),where('date','==',today)));
+  const el=document.getElementById('jorn-today');if(!el)return;
+  if(snap.empty){el.innerHTML='<div class="empty">⏱️<p>Sin jornadas hoy</p></div>';return;}
+  let h='';snap.forEach(d=>{const j=d.data();const st=j.start?.toDate?.();const en=j.end?.toDate?.();const ss=st?st.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'}):'—';const es=en?en.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'}):'En curso';const mins=j.minutes||0,hrs=Math.floor(mins/60),min2=mins%60;h+=`<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--bo)"><div style="width:32px;height:32px;border-radius:50%;background:${j.active?'var(--gl)':'#f3f4f6'};display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:${j.active?'var(--g)':'#666'}">${(j.workerName||'?').charAt(0)}</div><div style="flex:1"><div style="font-size:13px;font-weight:600">${j.workerName||''}</div><div style="font-size:11px;color:#666">Entrada: ${ss} · Salida: ${es}</div></div><span class="badge ${j.active?'bok':'bot'}">${j.active?'⏱️ Activo':hrs+'h '+min2+'min'}</span></div>`;});
+  el.innerHTML=h;
+};
+setInterval(()=>{const el=document.getElementById('at-equipo');if(el&&el.style.display!=='none'){loadMap();loadJorn();}},30000);
+// ADMIN
+// ============================================
+// AUTO-GENERATE RECURRING EVENTS FOR ALL CLIENTS
+// ============================================
+async function generateAllRecurring(){
+  try{
+    const clients=await getDocs(collection(db,'clients'));
+    const now=new Date();
+    const maxDate=new Date();maxDate.setMonth(maxDate.getMonth()+3); // 3 months ahead
+
+    for(const dc of clients.docs){
+      const c=dc.data();
+      if(!c.recur||c.recur==='')continue; // Skip clients without recurrence
+
+      // Get existing recurring events for this client
+      const existing=await getDocs(query(
+        collection(db,'events'),
+        where('clientId','==',dc.id),
+        where('done','==',false)
+      ));
+      const existingDates=new Set();
+      existing.forEach(d=>{if(d.data().date)existingDates.add(d.data().date);});
+
+      // Generate dates based on recurrence pattern
+      const dates=getRecurDates(c.recur,c.fixedDay||1,c.weekday||1,now,maxDate);
+
+      for(const ds of dates){
+        if(!existingDates.has(ds)){
+          await addDoc(collection(db,'events'),{
+            type:'maint',
+            clientId:dc.id,
+            clientName:c.name,
+            worker:'',
+            date:ds,
+            time:'09:00',
+            desc:`Mantenimiento ${c.freq||''}${c.quota>0?' · '+c.quota+'€':''}`,
+            done:false,
+            recurring:true,
+            createdAt:serverTimestamp()
+          });
+        }
+      }
+    }
+  }catch(e){console.log('generateAllRecurring:',e);}
+}
+
+function getRecurDates(recur,fixedDay,weekday,from,to){
+  const dates=[];
+  const current=new Date(from);
+
+  if(recur==='daily'){
+    while(current<=to){
+      if(current>from)dates.push(current.toISOString().split('T')[0]);
+      current.setDate(current.getDate()+1);
+      if(dates.length>90)break;
+    }
+  } else if(recur==='weekly'){
+    // Find next occurrence of weekday (1=Mon...7=Sun)
+    const targetDay=weekday||1;
+    let d=new Date(from);
+    // Move to next target weekday
+    const curDay=d.getDay()===0?7:d.getDay();
+    let diff=targetDay-curDay;
+    if(diff<=0)diff+=7;
+    d.setDate(d.getDate()+diff);
+    while(d<=to){
+      dates.push(d.toISOString().split('T')[0]);
+      d=new Date(d);d.setDate(d.getDate()+7);
+    }
+  } else if(recur==='biweekly'){
+    const targetDay=weekday||1;
+    let d=new Date(from);
+    const curDay=d.getDay()===0?7:d.getDay();
+    let diff=targetDay-curDay;
+    if(diff<=0)diff+=7;
+    d.setDate(d.getDate()+diff);
+    while(d<=to){
+      dates.push(d.toISOString().split('T')[0]);
+      d=new Date(d);d.setDate(d.getDate()+14);
+    }
+  } else if(recur==='monthly'){
+    let m=new Date(from.getFullYear(),from.getMonth(),fixedDay||1);
+    if(m<=from)m=new Date(from.getFullYear(),from.getMonth()+1,fixedDay||1);
+    while(m<=to){
+      dates.push(m.toISOString().split('T')[0]);
+      m=new Date(m.getFullYear(),m.getMonth()+1,fixedDay||1);
+    }
+  } else if(recur==='quarterly'){
+    let m=new Date(from.getFullYear(),from.getMonth(),fixedDay||1);
+    if(m<=from)m=new Date(m.getFullYear(),m.getMonth()+3,fixedDay||1);
+    while(m<=to){
+      dates.push(m.toISOString().split('T')[0]);
+      m=new Date(m.getFullYear(),m.getMonth()+3,fixedDay||1);
+    }
+  }
+  return dates;
+}
+
+async function loadAdmin(){
+  goS('s-admin');
+  requestNotifPermission();
+  await generateAllRecurring(); // Auto-generate recurring eventsdocument.getElementById('ag').textContent='Hola, '+CU.email.split('@')[0]+' 👋';document.getElementById('tdl').textContent=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});loadStats();loadTodayE();loadAP();loadNB();popS();}
+async function loadStats(){const cl=await getDocs(collection(db,'clients'));document.getElementById('s1').textContent=cl.size;const td=new Date().toISOString().split('T')[0],ev=await getDocs(query(collection(db,'events'),where('date','==',td)));document.getElementById('s2').textContent=ev.size;let pe=0;ev.forEach(j=>{if(!j.data().done)pe++;});document.getElementById('s3').textContent=pe;const al=await getDocs(query(collection(db,'alerts'),where('done','==',false)));document.getElementById('s4').textContent=al.size;}
+async function loadNB(){const al=await getDocs(query(collection(db,'alerts'),where('done','==',false)));const b=document.getElementById('nc');if(al.size>0){b.textContent=al.size;b.style.display='flex';}else b.style.display='none';}
+async function loadTodayE(){const td=new Date().toISOString().split('T')[0];const snap=await getDocs(query(collection(db,'events'),where('date','==',td),orderBy('time','asc')));const el=document.getElementById('today-list');if(snap.empty){el.innerHTML='<div class="empty">📋<p>Sin eventos hoy</p></div>';return;}el.innerHTML='';snap.forEach(d=>{el.innerHTML+=evCard(d.id,d.data());});}
+async function loadAP(){const snap=await getDocs(query(collection(db,'alerts'),where('done','==',false)));const el=document.getElementById('alerts-prev');if(snap.empty){el.innerHTML='<div class="empty">🔔<p>Sin alertas</p></div>';return;}el.innerHTML='';let c=0;snap.forEach(d=>{if(c++>3)return;const a=d.data();el.innerHTML+=`<div class="card"><div style="display:flex;align-items:center;justify-content:space-between"><div><div style="font-size:13px;font-weight:600">${aIc(a.type)} ${a.desc||''}</div><div style="font-size:12px;color:#666">${a.clientName||''} · ${a.date||''}</div></div></div></div>`;});}
+function aIc(t){return{obs:'👁️',riego:'💧',plantas:'🌱',piezas:'🔧',urgente:'🔴',otros:'🟢'}[t]||'🔔';}
+function evCard(id,e){
+  const ic={maint:'🔧',extra:'⭐',visit:'🏠',call:'📞',otros:'🌳'};
+  const lb={maint:'Manten.',extra:'Extra',visit:'Visita',call:'Llamada',otros:'Otros'};
+  const bk={maint:'bok',extra:'bex',otros:'bot',visit:'bvi',call:'bbl'};
+  const recurTag=e.recurring?'<span class="badge" style="background:#dbeafe;color:#1e40af;font-size:10px;margin-left:4px">🔄 Recurrente</span>':'';
+  return '<div class="card" style="'+(e.done?'opacity:0.7':'')+'"><div style="display:flex;gap:10px;align-items:flex-start"><div style="width:34px;height:34px;border-radius:10px;background:'+(e.done?'#f3f4f6':'var(--gl)')+';display:flex;align-items:center;justify-content:center;font-size:17px">'+( ic[e.type]||'📋')+'</div><div style="flex:1"><div style="font-size:13px;font-weight:600">'+(e.clientName||'')+' <span class="badge '+(bk[e.type]||'bok')+'">'+(lb[e.type]||e.type)+'</span>'+recurTag+'</div><div style="font-size:11px;color:#666;margin-top:2px">'+(e.time||'')+' '+(e.worker?'· 👷 '+e.worker:'')+'</div>'+(e.desc?'<div style="font-size:12px;color:#666;margin-top:3px">'+e.desc+'</div>':'')+'<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">'+(e.done?'<span class="badge bok">✅ Completado</span>':'<button class="btn bs" style="background:var(--gl);color:var(--g);border-color:var(--gm)" onclick="markED(''+id+'')">✅ Marcar hecho</button>')+'<button class="btn bs bd" onclick="delEv(''+id+'')">🗑️</button></div></div></div></div>';
+}const lb={maint:'Manten.',extra:'Extra',visit:'Visita',call:'Llamada',otros:'Otros'};const bk={maint:'bok',extra:'bex',otros:'bot',visit:'',call:''};return `<div class="card"><div style="display:flex;gap:10px;align-items:flex-start"><div style="width:34px;height:34px;border-radius:10px;background:var(--gl);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0">${ic[e.type]||'📋'}</div><div style="flex:1"><div style="font-size:13px;font-weight:600">${e.clientName||''} <span class="badge ${bk[e.type]||'bok'}">${lb[e.type]||e.type}</span></div><div style="font-size:11px;color:#666;margin-top:2px">${e.time||''} ${e.worker?'· '+e.worker:''}</div>${e.desc?`<div style="font-size:12px;color:#666;margin-top:3px">${e.desc}</div>`:''}<div style="display:flex;gap:6px;margin-top:8px">${!e.done?`<button class="btn bs" style="background:var(--gl);color:var(--g);border-color:var(--gl)" onclick="markED('${id}')">✅ Hecho</button>`:'<span class="badge bok">✅ Hecho</span>'}<button class="btn bs bd" onclick="delEv('${id}')">🗑️</button></div></div></div></div>`;}
+// CLIENTS
+window._fCli=window.fCli=(f,btn)=>{cliF=f;document.querySelectorAll('#at-clientes .pill').forEach(b=>b.classList.remove('on'));btn.classList.add('on');loadCli();};
+async function loadCli(){const snap=await getDocs(collection(db,'clients'));const el=document.getElementById('cl-list');if(snap.empty){el.innerHTML='<div class="empty">🌿<p>Sin clientes</p></div>';return;}el.innerHTML='';let cnt=0;snap.forEach(d=>{const c=d.data();if(cliS&&!c.name.toLowerCase().includes(cliS.toLowerCase()))return;if(cliF!=='all'&&!(c.freq||'Mensual').includes(cliF))return;cnt++;const qTag=c.quota>0?`<span style="font-size:11px;color:var(--g);font-weight:600">💰 ${c.quota}€${c.ivaRate>0?' +IVA':''}</span>`:'';el.innerHTML+=`<div class="card cp" onclick="openCli('${d.id}')"><div style="display:flex;align-items:center;justify-content:space-between"><div><div style="font-size:14px;font-weight:600">${c.name}</div><div style="font-size:12px;color:#666">${c.addr||''}</div></div><span class="badge bok">${c.freq||'Mensual'}</span></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:5px"><div style="font-size:12px;color:#666">📞 ${c.phone||'—'}</div>${qTag}</div></div>`;});if(!cnt)el.innerHTML='<div class="empty">🌿<p>Sin clientes con este filtro</p></div>';}
+window._openCli=window.openCli=async(id)=>{CID=id;const d=await getDoc(doc(db,'clients',id));CD=d.data();const c=CD;document.getElementById('cn-t').textContent=c.name;document.getElementById('ca-t').textContent=c.addr||'';document.getElementById('cl-info').innerHTML=`<div style="font-size:14px;font-weight:600;margin-bottom:10px">${c.name}</div><p style="font-size:13px;margin-bottom:5px">📍 ${c.addr||'—'}</p><p style="font-size:13px;margin-bottom:5px">📞 ${c.phone||'—'}</p><p style="font-size:13px;margin-bottom:5px">🗓️ ${c.freq||'Mensual'}${c.recurLabel?' · '+c.recurLabel:''}</p><p style="font-size:13px;color:#666">${c.notes||''}</p>`;const qb=document.getElementById('cl-quota');if(qb&&c.quota>0){const ia=c.quota*(c.ivaRate||0)/100;qb.innerHTML=`<div style="background:var(--gl);border-radius:10px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600;color:var(--g)">💰 ${c.quota}€${c.ivaRate>0?' + IVA '+c.ivaRate+'%':''}</div>${c.ivaRate>0?`<div style="font-size:12px;color:#666">Total: ${(c.quota+ia).toFixed(2)}€</div>`:''}</div>${c.recurLabel?`<div style="font-size:12px;color:var(--g);font-weight:600">📅 ${c.recurLabel}</div>`:''}</div>`;}else if(qb)qb.innerHTML='';goS('s-client');cTab('info',document.querySelector('#s-client .tb'));};
+window._saveCli=window.saveCli=async()=>{const n=document.getElementById('nc-n').value.trim();if(!n){showT('El nombre es obligatorio');return;}const quota=parseFloat(document.getElementById('nc-q')?.value)||0;const iv=parseFloat(document.getElementById('nc-iv')?.value)||0;const r=document.getElementById('nc-r')?.value||'';const fd=parseInt(document.getElementById('nc-d')?.value)||0;const rl=r==='daily'?'Cada día':r==='weekly'?'Cada semana':r==='biweekly'?'Cada 2 semanas':r==='monthly'&&fd>0?`Día ${fd} de cada mes`:r==='quarterly'?'Cada 3 meses':'';const ref=await addDoc(collection(db,'clients'),{name:n,addr:document.getElementById('nc-a').value,phone:document.getElementById('nc-p').value,freq:document.getElementById('nc-f').value,quota,ivaRate:iv,recur:r,fixedDay:fd,recurLabel:rl,notes:document.getElementById('nc-no').value,createdAt:serverTimestamp()});if(r){const now=new Date();for(let i=0;i<6;i++){let dd=new Date(now);if(r==='monthly'&&fd>0)dd=new Date(now.getFullYear(),now.getMonth()+i,fd);else if(r==='weekly')dd.setDate(now.getDate()+i*7);else if(r==='biweekly')dd.setDate(now.getDate()+i*14);else if(r==='quarterly')dd=new Date(now.getFullYear(),now.getMonth()+i*3,fd||1);else if(r==='daily')dd.setDate(now.getDate()+i);if(dd>now){const ds=dd.toISOString().split('T')[0];await addDoc(collection(db,'events'),{type:'maint',clientId:ref.id,clientName:n,worker:'',date:ds,time:'09:00',desc:`Mantenimiento${quota>0?' · '+quota+'€':''}`,done:false,recurring:true,createdAt:serverTimestamp()});}}}CM('modal-nc');['nc-n','nc-a','nc-p','nc-no'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});loadCli();loadStats();popS();showT('✅ Cliente guardado');};
+window._openEdit=window.openEdit=()=>{if(!CD)return;['n','a','p','no'].forEach(k=>{const m={n:'name',a:'addr',p:'phone',no:'notes'};const el=document.getElementById('ec-'+k);if(el)el.value=CD[m[k]]||'';});const fs=document.getElementById('ec-f');if(fs)for(let i=0;i<fs.options.length;i++){if(fs.options[i].text===CD.freq){fs.selectedIndex=i;break;}}const rs=document.getElementById('ec-r');if(rs&&CD.recur){for(let i=0;i<rs.options.length;i++){if(rs.options[i].value===CD.recur){rs.selectedIndex=i;break;}}}const qe=document.getElementById('ec-q');if(qe)qe.value=CD.quota||'';const ie=document.getElementById('ec-iv');if(ie)ie.value=CD.ivaRate||21;const de=document.getElementById('ec-d');if(de)de.value=CD.fixedDay||'';togDay('ec');calcIVA('ec');OM('modal-ec');};
+window._updCli=window.updCli=async()=>{const n=document.getElementById('ec-n').value.trim();if(!n){showT('Nombre obligatorio');return;}const quota=parseFloat(document.getElementById('ec-q')?.value)||0;const iv=parseFloat(document.getElementById('ec-iv')?.value)||0;const r=document.getElementById('ec-r')?.value||'';const fd=parseInt(document.getElementById('ec-d')?.value)||0;const rl=r==='daily'?'Cada día':r==='weekly'?'Cada semana':r==='biweekly'?'Cada 2 semanas':r==='monthly'&&fd>0?`Día ${fd} de cada mes`:r==='quarterly'?'Cada 3 meses':'';await updateDoc(doc(db,'clients',CID),{name:n,addr:document.getElementById('ec-a').value,phone:document.getElementById('ec-p').value,freq:document.getElementById('ec-f').value,quota,ivaRate:iv,recur:r,fixedDay:fd,recurLabel:rl,notes:document.getElementById('ec-no').value});CM('modal-ec');openCli(CID);loadCli();popS();showT('✅ Actualizado');};
+// CALENDAR
+window._chM=window.chM=(d)=>{calM+=d;if(calM>11){calM=0;calY++;}if(calM<0){calM=11;calY--;}calD=null;renderCal();loadMonthE();};
+window.renderCal=async()=>{const months=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];document.getElementById('cal-lbl').textContent=months[calM]+' '+calY;const today=new Date(),first=new Date(calY,calM,1),days=new Date(calY,calM+1,0).getDate();let sd=first.getDay();if(sd===0)sd=7;const ms=`${calY}-${String(calM+1).padStart(2,'0')}`;const snap=await getDocs(collection(db,'events'));const ebd={};snap.forEach(d=>{const e=d.data();if(e.date&&e.date.startsWith(ms)){const day=parseInt(e.date.split('-')[2]);if(!ebd[day])ebd[day]=[];ebd[day].push(e.type);}});let h='';for(let i=1;i<sd;i++)h+='<div></div>';for(let d2=1;d2<=days;d2++){const iT=d2===today.getDate()&&calM===today.getMonth()&&calY===today.getFullYear(),iS=d2===calD;const dots=(ebd[d2]||[]).map(t=>`<div class="dot d${t==='maint'?'m':t==='extra'?'e':'o'}"></div>`).join('');h+=`<div class="cld${iT?' td':''}${iS?' sel':''}" onclick="selDay(${d2})">${d2}${dots?`<div class="dots">${dots}</div>`:''}</div>`;}document.getElementById('cal-grid').innerHTML=h;};
+window._selDay=window.selDay=async(day)=>{calD=day;renderCal();const ds=`${calY}-${String(calM+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;document.getElementById('ne-d').value=ds;document.getElementById('cal-sel').textContent=`Eventos del ${day}/${calM+1}/${calY}`;const snap=await getDocs(query(collection(db,'events'),where('date','==',ds),orderBy('time','asc')));const el=document.getElementById('cal-evs');if(snap.empty){el.innerHTML='<div class="empty">📅<p>Sin eventos</p></div>';return;}el.innerHTML='';snap.forEach(d=>{el.innerHTML+=evCard(d.id,d.data());});};
+async function loadMonthE(){const ms=`${calY}-${String(calM+1).padStart(2,'0')}`;const snap=await getDocs(collection(db,'events'));const el=document.getElementById('cal-evs');let h='';let c=0;snap.forEach(d=>{const e=d.data();if(e.date&&e.date.startsWith(ms)){h+=evCard(d.id,e);c++;}});el.innerHTML=c?h:'<div class="empty">📅<p>Sin eventos</p></div>';}
+window._saveEv=window.saveEv=async()=>{const cs=document.getElementById('ne-c');const date=document.getElementById('ne-d').value;if(!date){showT('Selecciona fecha');return;}if(!cs.value){showT('Selecciona cliente');return;}const ws=document.getElementById('ne-w'),cn=cs.options[cs.selectedIndex]?.text||'';await addDoc(collection(db,'events'),{type:document.getElementById('ne-t').value,clientId:cs.value,clientName:cn,worker:ws.options[ws.selectedIndex]?.text||'',date,time:document.getElementById('ne-h').value,desc:document.getElementById('ne-de').value,done:false,createdAt:serverTimestamp()});if(document.getElementById('ne-al').checked)await addDoc(collection(db,'alerts'),{clientId:cs.value,clientName:cn,type:'otros',desc:`Evento: ${cn}`,date,done:false,createdAt:serverTimestamp()});CM('modal-ne');document.getElementById('ne-de').value='';renderCal();loadMonthE();loadTodayE();loadStats();loadNB();showT('📅 Programado');};
+window._markED=window.markED=async(id)=>{
+  const evDoc=await getDoc(doc(db,'events',id));
+  const ev=evDoc.data();
+  await updateDoc(doc(db,'events',id),{done:true});
+  // Auto-generate next occurrence if recurring
+  if(ev.recurring&&ev.clientId&&ev.date){
+    try{
+      const cd=await getDoc(doc(db,'clients',ev.clientId));
+      if(cd.exists()){
+        const c=cd.data();
+        if(c.recur){
+          const currentDate=new Date(ev.date+'T12:00:00');
+          let nextDate=new Date(currentDate);
+          if(c.recur==='daily')nextDate.setDate(nextDate.getDate()+1);
+          else if(c.recur==='weekly')nextDate.setDate(nextDate.getDate()+7);
+          else if(c.recur==='biweekly')nextDate.setDate(nextDate.getDate()+14);
+          else if(c.recur==='monthly')nextDate=new Date(nextDate.getFullYear(),nextDate.getMonth()+1,c.fixedDay||1);
+          else if(c.recur==='quarterly')nextDate=new Date(nextDate.getFullYear(),nextDate.getMonth()+3,c.fixedDay||1);
+          const nextDs=nextDate.toISOString().split('T')[0];
+          // Check it doesn't already exist
+          const existing=await getDocs(query(collection(db,'events'),where('clientId','==',ev.clientId),where('date','==',nextDs),where('recurring','==',true)));
+          if(existing.empty){
+            await addDoc(collection(db,'events'),{type:'maint',clientId:ev.clientId,clientName:ev.clientName,worker:ev.worker||'',date:nextDs,time:ev.time||'09:00',desc:ev.desc||'Mantenimiento',done:false,recurring:true,createdAt:serverTimestamp()});
+          }
+        }
+      }
+    }catch(e){console.log('next recur:',e);}
+  }
+  loadTodayE();loadMonthE();loadStats();if(calD)selDay(calD);showT('✅ Hecho — próxima cita generada');
+};
+window._delEv=window.delEv=async(id)=>{if(!confirm('¿Eliminar?'))return;await deleteDoc(doc(db,'events',id));loadTodayE();loadMonthE();loadStats();if(calD)selDay(calD);};
+// MAINTS
+window._fM=window.fM=(f,btn)=>{mF=f;document.querySelectorAll('#ct-mant .pill').forEach(b=>b.classList.remove('on'));btn.classList.add('on');loadMants();};
+async function loadMants(){if(!CID)return;const snap=await getDocs(query(collection(db,'maints'),where('clientId','==',CID),orderBy('date','desc')));const el=document.getElementById('mant-list');let h='';let c=0;snap.forEach(d=>{const m=d.data();if(mF==='pending'&&m.done)return;if(mF==='done'&&!m.done)return;c++;h+=`<div class="card cp" onclick="openM('${d.id}')"><div style="display:flex;align-items:center;justify-content:space-between"><div><div style="font-size:14px;font-weight:600">${m.date||''}</div><div style="font-size:12px;color:#666">${m.workerName||m.worker||'Sin asignar'}</div></div>${m.done?'<span class="badge bok">✅</span>':'<span class="badge bpe">⏳</span>'}</div><div style="font-size:12px;color:#666;margin-top:4px">${(m.tasks||'').substring(0,60)}</div></div>`;});el.innerHTML=c?h:'<div class="empty">🌿<p>Sin mantenimientos</p></div>';}
+window._openNM=window.openNM=()=>{document.getElementById('nm-d').value=new Date().toISOString().split('T')[0];OM('modal-nm');};
+window._saveMA=window.saveMA=async()=>{const date=document.getElementById('nm-d').value;if(!date){showT('Selecciona fecha');return;}const ws=document.getElementById('nm-w'),wn=ws.options[ws.selectedIndex]?.text||'';const cd=await getDoc(doc(db,'clients',CID));const cn=cd.data().name;await addDoc(collection(db,'maints'),{clientId:CID,clientName:cn,date,time:document.getElementById('nm-h').value,worker:wn,workerName:wn,tasks:document.getElementById('nm-t').value,done:false,photos:[],createdAt:serverTimestamp()});await addDoc(collection(db,'events'),{type:'maint',clientId:CID,clientName:cn,worker:wn,date,time:document.getElementById('nm-h').value,desc:document.getElementById('nm-t').value,done:false,createdAt:serverTimestamp()});if(document.getElementById('nm-al').checked)await addDoc(collection(db,'alerts'),{clientId:CID,clientName:cn,type:'otros',desc:`Mantenimiento: ${cn} el ${date}`,date,done:false,createdAt:serverTimestamp()});CM('modal-nm');document.getElementById('nm-t').value='';loadMants();showT('✅ Programado');};
+window._openM=window.openM=async(id)=>{const d=await getDoc(doc(db,'maints',id)),m=d.data();document.getElementById('mt-b').textContent=m.date||'Mantenimiento';document.getElementById('ms-b').textContent=m.workerName||m.worker||'';const ph=(m.photos||[]).map(p=>`<div class="pt"><img src="${p}"></div>`).join('')||'<p style="color:#999;font-size:13px">Sin fotos</p>';document.getElementById('maint-det').innerHTML=`
+    <div class="card" style="margin-bottom:10px">
+      ${m.done?'<span class="badge bok" style="font-size:14px">✅ Completado</span>':`<button class="btn bp bf" onclick="markDone('${id}')">Marcar como hecho ✅</button>`}
+    </div>
+    ${m.workStart||m.workEnd?`
+    <div class="card" style="margin-bottom:10px;background:#EAF3DE;border-color:var(--gm)">
+      <span class="lbl" style="color:var(--g)">⏱️ Control de horas</span>
+      <div style="display:flex;gap:12px;margin-top:6px;flex-wrap:wrap">
+        ${m.workStart?`<div style="text-align:center;background:#fff;border-radius:8px;padding:8px 12px;flex:1"><div style="font-size:10px;color:#666;font-weight:600">INICIO</div><div style="font-size:18px;font-weight:700;color:var(--g)">${m.workStart}</div></div>`:''}
+        ${m.workEnd?`<div style="text-align:center;background:#fff;border-radius:8px;padding:8px 12px;flex:1"><div style="font-size:10px;color:#666;font-weight:600">FIN</div><div style="font-size:18px;font-weight:700;color:#b91c1c">${m.workEnd}</div></div>`:'<div style="text-align:center;background:#fff;border-radius:8px;padding:8px 12px;flex:1"><div style="font-size:10px;color:#666;font-weight:600">FIN</div><div style="font-size:14px;color:#999">En curso...</div></div>'}
+        ${m.workDuration?`<div style="text-align:center;background:#fff;border-radius:8px;padding:8px 12px;flex:1"><div style="font-size:10px;color:#666;font-weight:600">TOTAL</div><div style="font-size:16px;font-weight:700;color:var(--g)">${m.workDuration}</div></div>`:''}
+      </div>
+    </div>`:''}
+    ${m.whoWorked?`<div class="card" style="margin-bottom:10px"><span class="lbl">👥 Trabajadores</span><p style="font-size:13px;font-weight:500">${m.whoWorked}</p></div>`:''}
+    <div class="card" style="margin-bottom:10px"><span class="lbl">✅ Trabajos realizados</span><p style="font-size:13px;line-height:1.9">${(m.tasks||'—').replace(/\n/g,'<br>')}</p></div>
+    ${m.obs?`<div class="card" style="margin-bottom:10px;border:2px solid #dc2626;background:#fff5f5">
+      <span class="lbl" style="color:#dc2626">👁️ OBSERVACIONES DEL TRABAJADOR</span>
+      <p style="font-size:14px;line-height:1.6;color:#1a1a1a;margin-top:4px">${m.obs}</p>
+    </div>`:''}
+    ${m.buyItems?`<div class="card" style="margin-bottom:10px;border-color:#f59e0b;background:#FFFBEB">
+      <span class="lbl" style="color:#92400E">⚠️ PENDIENTE COMPRAR / GESTIONAR</span>
+      <p style="font-size:13px;color:#92400E;line-height:1.7;margin-top:4px">${m.buyItems.replace(/\n/g,'<br>')}</p>
+    </div>`:''}
+    ${m.mat?`<div class="card" style="margin-bottom:10px;border-color:#3B82F6;background:#EFF6FF">
+      <span class="lbl" style="color:#1d4ed8">📦 MATERIAL ESPECÍFICO QUE FALTA</span>
+      <p style="font-size:13px;color:#1d4ed8;margin-top:4px">${m.mat}</p>
+    </div>`:''}
+    ${m.gps?`<div class="card" style="margin-bottom:10px"><span class="lbl">📍 GPS</span><p style="font-size:13px">${m.gps}</p></div>`:''}
+    <div class="card"><span class="lbl">📷 Fotos (${(m.photos||[]).length})</span><div class="pg2">${ph}</div></div>
+  `;goS('s-maint');};
+window._markDone=window.markDone=async(id)=>{await updateDoc(doc(db,'maints',id),{done:true});openM(id);showT('✅ Hecho');};
+// EXTRAS
+window._fE=window.fE=(f,btn)=>{eF=f;document.querySelectorAll('#ct-extra .pill').forEach(b=>b.classList.remove('on'));btn.classList.add('on');loadExtras();};
+async function loadExtras(){if(!CID)return;const snap=await getDocs(query(collection(db,'extras'),where('clientId','==',CID),orderBy('date','desc')));const el=document.getElementById('extra-list');let h='';let c=0;snap.forEach(d=>{const e=d.data();if(eF==='pending'&&e.done)return;if(eF==='done'&&!e.done)return;c++;h+=`<div class="card"><div style="display:flex;align-items:center;justify-content:space-between"><div><div style="font-size:14px;font-weight:600">${e.date||''}</div><div style="font-size:12px;color:#666">${e.worker||''} ${e.budget?'· '+e.budget:''}</div></div>${e.done?'<span class="badge bok">✅</span>':'<span class="badge bex">⏳</span>'}</div><div style="font-size:12px;color:#666;margin-top:4px">${e.desc||''}</div>${!e.done?`<button class="btn bs" style="background:var(--gl);color:var(--g);margin-top:8px" onclick="markE('${d.id}')">✅ Hecho</button>`:''}</div>`;});el.innerHTML=c?h:'<div class="empty">⭐<p>Sin extras</p></div>';}
+window._saveEx=window.saveEx=async()=>{const desc=document.getElementById('nex-d').value.trim();if(!desc){showT('Escribe descripción');return;}const cd=await getDoc(doc(db,'clients',CID));const cn=cd.data().name;const ws=document.getElementById('nex-w'),date=document.getElementById('nex-f').value;await addDoc(collection(db,'extras'),{clientId:CID,clientName:cn,desc,date,worker:ws.options[ws.selectedIndex]?.text||'',budget:document.getElementById('nex-b').value,done:false,createdAt:serverTimestamp()});await addDoc(collection(db,'events'),{type:'extra',clientId:CID,clientName:cn,worker:ws.options[ws.selectedIndex]?.text||'',date,time:'09:00',desc,done:false,createdAt:serverTimestamp()});CM('modal-nex');document.getElementById('nex-d').value='';loadExtras();showT('⭐ Extra guardado');};
+window._markE=window.markE=async(id)=>{await updateDoc(doc(db,'extras',id),{done:true});loadExtras();showT('✅ Hecho');};
+// OTROS
+async function loadOtros(){if(!CID)return;const snap=await getDocs(query(collection(db,'otros'),where('clientId','==',CID),orderBy('date','desc')));const el=document.getElementById('otros-list');if(snap.empty){el.innerHTML='<div class="empty">🌳<p>Sin otros</p></div>';return;}el.innerHTML='';snap.forEach(d=>{const o=d.data();el.innerHTML+=`<div class="card"><div style="display:flex;align-items:center;justify-content:space-between"><div><div style="font-size:14px;font-weight:600">${o.subtype||'Otro'} · ${o.date||''}</div><div style="font-size:12px;color:#666">${o.worker||''} ${o.budget?'· '+o.budget:''}</div></div>${o.done?'<span class="badge bok">✅</span>':'<span class="badge bot">⏳</span>'}</div><div style="font-size:12px;color:#666;margin-top:4px">${o.desc||''}</div>${!o.done?`<button class="btn bs" style="background:var(--gl);color:var(--g);margin-top:8px" onclick="markO('${d.id}')">✅ Hecho</button>`:''}</div>`;});}
+window._saveO=window.saveO=async()=>{const desc=document.getElementById('no-d').value.trim();if(!desc){showT('Escribe descripción');return;}const cd=await getDoc(doc(db,'clients',CID));const cn=cd.data().name;const ws=document.getElementById('no-w'),date=document.getElementById('no-f').value;await addDoc(collection(db,'otros'),{clientId:CID,clientName:cn,subtype:document.getElementById('no-s').value,desc,date,worker:ws.options[ws.selectedIndex]?.text||'',budget:document.getElementById('no-b').value,done:false,createdAt:serverTimestamp()});await addDoc(collection(db,'events'),{type:'otros',clientId:CID,clientName:cn,worker:ws.options[ws.selectedIndex]?.text||'',date,time:'09:00',desc,done:false,createdAt:serverTimestamp()});CM('modal-no');document.getElementById('no-d').value='';loadOtros();showT('🌳 Guardado');};
+window._markO=window.markO=async(id)=>{await updateDoc(doc(db,'otros',id),{done:true});loadOtros();showT('✅ Hecho');};
+// FACTURAS
+window._fF=window.fF=(f,btn)=>{fF2=f;document.querySelectorAll('#ct-fact .pill').forEach(b=>b.classList.remove('on'));btn.classList.add('on');loadFacts();};
+async function loadFacts(){if(!CID)return;const snap=await getDocs(query(collection(db,'facturas'),where('clientId','==',CID),orderBy('date','desc')));const el=document.getElementById('fact-list');let h='';let c=0,tot=0,pe=0;snap.forEach(d=>{const f=d.data();const amt=parseFloat(f.totalAmount||f.amount)||0;if(f.status==='paid')tot+=amt;else pe+=amt;if(fF2==='paid'&&f.status!=='paid')return;if(fF2==='pending'&&f.status!=='pending')return;c++;h+=`<div class="card" style="margin-bottom:10px"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px"><div style="flex:1"><div style="font-size:14px;font-weight:600">${f.concept||''}</div><div style="font-size:12px;color:#666">${f.date||''} · ${f.method||''}</div>${f.desc?`<div style="font-size:11px;color:#888">${f.desc.substring(0,50)}</div>`:''}</div><div style="text-align:right;margin-left:10px;flex-shrink:0"><div style="font-size:17px;font-weight:700;color:${f.status==='paid'?'var(--g)':'#854F0B'}">${amt.toFixed(2)}€</div><span class="badge ${f.status==='paid'?'bok':'bpe'}">${f.status==='paid'?'✅ Pagada':'⏳ Pend.'}</span></div></div><div style="display:flex;gap:6px">${f.status==='pending'?`<button class="btn bs" style="background:var(--gl);color:var(--g)" onclick="markFP('${d.id}')">✅ Cobrada</button>`:''}<button class="btn bs bd" onclick="delF('${d.id}')">🗑️</button></div></div>`;});document.getElementById('f-tot').textContent=tot.toFixed(2)+'€';document.getElementById('f-pe').textContent=pe.toFixed(2)+'€';el.innerHTML=c?h:'<div class="empty">💰<p>Sin facturas</p></div>';}
+window._saveFact=window.saveFact=async()=>{const base=parseFloat(document.getElementById('nf-b')?.value)||0;if(!base){showT('Escribe el importe');return;}const date=document.getElementById('nf-f')?.value;if(!date){showT('Selecciona fecha');return;}if(!CID){showT('Selecciona un cliente');return;}const iv=parseFloat(document.getElementById('nf-iv')?.value)||0;const ia=base*iv/100;const total=base+ia;const cd=await getDoc(doc(db,'clients',CID));const cn=cd.data().name;await addDoc(collection(db,'facturas'),{clientId:CID,clientName:cn,concept:document.getElementById('nf-c').value,desc:document.getElementById('nf-d').value,baseAmount:base,ivaRate:iv,ivaAmount:ia,totalAmount:total,date,status:document.getElementById('nf-s').value,method:document.getElementById('nf-m').value,notes:document.getElementById('nf-no').value,createdAt:serverTimestamp()});CM('modal-nf');['nf-b','nf-d','nf-no'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});const tb=document.getElementById('nf-tb');if(tb)tb.style.display='none';loadFacts();showT('💰 Factura guardada · '+total.toFixed(2)+'€');};
+window._markFP=window.markFP=async(id)=>{await updateDoc(doc(db,'facturas',id),{status:'paid'});loadFacts();showT('✅ Cobrada');};
+window._delF=window.delF=async(id)=>{if(!confirm('¿Eliminar?'))return;await deleteDoc(doc(db,'facturas',id));loadFacts();};
+window._searchF=window.searchF=async()=>{const cli=(document.getElementById('sf-c')?.value||'').toLowerCase();const kw=(document.getElementById('sf-k')?.value||'').toLowerCase();const from=document.getElementById('sf-fd')?.value||'';const to=document.getElementById('sf-ft')?.value||'';const st=document.getElementById('sf-s')?.value||'all';const el=document.getElementById('sf-res');el.innerHTML='<p style="color:#666;font-size:13px;text-align:center;padding:10px">Buscando...</p>';const snap=await getDocs(query(collection(db,'facturas'),orderBy('date','desc')));let h='';let cnt=0,tot=0,pe=0;snap.forEach(d=>{const f=d.data();const amt=parseFloat(f.totalAmount||f.amount)||0;if(cli&&!f.clientName?.toLowerCase().includes(cli))return;if(kw){const s=`${f.concept||''} ${f.desc||''} ${f.notes||''} ${f.clientName||''}`.toLowerCase();if(!s.includes(kw))return;}if(from&&f.date<from)return;if(to&&f.date>to)return;if(st!=='all'&&f.status!==st)return;tot+=amt;if(f.status==='pending')pe+=amt;cnt++;h+=`<div class="card" style="margin-bottom:8px"><div style="display:flex;align-items:center;justify-content:space-between"><div style="flex:1"><div style="font-size:14px;font-weight:600">${f.clientName||''}</div><div style="font-size:12px;color:#666">${f.date||''} · ${f.concept||''}</div></div><div style="text-align:right;margin-left:8px;flex-shrink:0"><div style="font-size:15px;font-weight:700;color:${f.status==='paid'?'var(--g)':'#854F0B'}">${amt.toFixed(2)}€</div><span class="badge ${f.status==='paid'?'bok':'bpe'}">${f.status==='paid'?'✅':'⏳'}</span></div></div></div>`;});const sum=cnt?`<div style="background:var(--gl);border-radius:10px;padding:10px 14px;margin-bottom:10px"><div style="display:flex;justify-content:space-between"><span style="font-size:13px;font-weight:600;color:var(--g)">${cnt} facturas</span><span style="font-size:16px;font-weight:700;color:var(--g)">${tot.toFixed(2)}€</span></div>${pe>0?`<div style="font-size:12px;color:#854F0B">⏳ Pendiente: ${pe.toFixed(2)}€</div>`:''}</div>`:'';el.innerHTML=cnt?sum+h:'<div class="empty">🔍<p>Sin resultados</p></div>';};
+// ALERTS
+window._fAlt=window.fAlt=(f,btn)=>{aF=f;document.querySelectorAll('#at-alertas .pill').forEach(b=>b.classList.remove('on'));btn.classList.add('on');loadAllAlerts();};
+async function loadAllAlerts(){const snap=await getDocs(query(collection(db,'alerts'),where('done','==',false)));const el=document.getElementById('all-alerts');let h='';let c=0;snap.forEach(d=>{const a=d.data();if(aF!=='all'&&a.type!==aF)return;c++;h+=`<div class="card"><div style="display:flex;align-items:center;justify-content:space-between"><div><div style="font-size:13px;font-weight:600">${aIc(a.type)} ${a.desc||''}</div><div style="font-size:12px;color:#666">${a.clientName||''} · ${a.date||''}</div></div></div><div style="display:flex;gap:6px;margin-top:8px"><button class="btn bs" style="background:var(--gl);color:var(--g)" onclick="resAlt('${d.id}')">✅ Resolver</button><button class="btn bs bd" onclick="delAlt('${d.id}')">🗑️</button></div></div>`;});el.innerHTML=c?h:'<div class="empty">🔔<p>Sin alertas</p></div>';}
+async function loadCliAlerts(){if(!CID)return;const snap=await getDocs(query(collection(db,'alerts'),where('clientId','==',CID)));const el=document.getElementById('cl-alt-list');if(snap.empty){el.innerHTML='<div class="empty">🔔<p>Sin alertas</p></div>';return;}el.innerHTML='';snap.forEach(d=>{const a=d.data();el.innerHTML+=`<div class="card"><div style="display:flex;align-items:center;justify-content:space-between"><div><div style="font-size:13px;font-weight:600">${aIc(a.type)} ${a.desc||''}</div><div style="font-size:12px;color:#666">${a.date||'—'}</div></div>${a.done?'<span class="badge bok">Resuelto</span>':`<button class="btn bs" style="background:var(--gl);color:var(--g)" onclick="resAlt('${d.id}')">Resolver</button>`}</div></div>`;});}
+window._saveAlt=window.saveAlt=async()=>{const desc=document.getElementById('na-d').value.trim();if(!desc){showT('Escribe descripción');return;}let cn='';if(CID){const cd=await getDoc(doc(db,'clients',CID));cn=cd.data().name;}await addDoc(collection(db,'alerts'),{clientId:CID||'',clientName:cn,type:document.getElementById('na-t').value,desc,date:document.getElementById('na-f').value,done:false,createdAt:serverTimestamp()});const savedDesc=document.getElementById('na-d').value;
+  CM('modal-na');document.getElementById('na-d').value='';
+  loadAllAlerts();loadAP();loadStats();loadNB();
+  if(CID)loadCliAlerts();
+  showT('🔔 Alerta creada — los trabajadores la verán en su app');
+  sendLocalNotif('🔔 Rosell Jardineria','Nueva alerta creada: '+savedDesc);};
+window._resAlt=window.resAlt=async(id)=>{await updateDoc(doc(db,'alerts',id),{done:true});loadAllAlerts();loadAP();loadStats();loadNB();if(CID)loadCliAlerts();showT('✅ Resuelta');};
+window._delAlt=window.delAlt=async(id)=>{await deleteDoc(doc(db,'alerts',id));loadAllAlerts();loadNB();};
+// WORKERS
+window._saveW=window.saveW=async()=>{const n=document.getElementById('nw-n').value.trim(),e=document.getElementById('nw-e').value.trim(),p=document.getElementById('nw-p').value;if(!n||!e||!p){showT('Rellena nombre, email y contraseña');return;}if(p.length<6){showT('Contraseña mín. 6 caracteres');return;}try{const cr=await createUserWithEmailAndPassword(auth,e,p);await addDoc(collection(db,'workers'),{name:n,email:e,phone:document.getElementById('nw-t').value,uid:cr.user.uid,createdAt:serverTimestamp()});CM('modal-nw');loadMap();popS();showT('✅ '+n+' añadido');}catch(er){showT('Error: '+(er.code==='auth/email-already-in-use'?'Email ya existe':er.message));}};
+window._delW=window.delW=async(id)=>{if(!confirm('¿Eliminar?'))return;await deleteDoc(doc(db,'workers',id));loadMap();};
+// SELECTS
+async function popS(){const ws=await getDocs(collection(db,'workers')),cl=await getDocs(collection(db,'clients'));['nm-w','ne-w','nex-w','no-w'].forEach(id=>{const s=document.getElementById(id);if(!s)return;s.innerHTML='<option value="">Sin asignar</option>';ws.forEach(d=>{s.innerHTML+=`<option value="${d.id}">${d.data().name}</option>`;});});['ne-c','reg-c'].forEach(id=>{const s=document.getElementById(id);if(!s)return;s.innerHTML='<option value="">Selecciona cliente</option>';cl.forEach(d=>{s.innerHTML+=`<option value="${d.id}">${d.data().name}</option>`;});});const wc=document.getElementById('w-ctrs');if(wc){wc.innerHTML='';ws.forEach(d=>{const w=d.data();const k=w.name.replace(/\s/g,'_');if(!ctrs[k])ctrs[k]=0;wc.innerHTML+=`<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--bo)"><span style="font-size:13px;flex:1">${w.name}</span><div class="ctr"><button class="cbtn" onclick="adjC('${k}',-1)">−</button><span id="cnt-${k}" style="font-size:14px;font-weight:700;color:var(--g);min-width:20px;text-align:center">${ctrs[k]||0}</span><button class="cbtn p" onclick="adjC('${k}',1)">+</button></div></div>`;});}}
+// WORKER PANEL
+async function loadWorker(){
+  goS('s-worker');
+  requestNotifPermission();
+  const now=new Date(),h=now.getHours();
+  document.getElementById('wg').textContent=(h<12?'Buenos días':h<20?'Buenas tardes':'Buenas noches')+' 🌿';
+  document.getElementById('wd').textContent=now.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
+  document.getElementById('wa').textContent=CU.email.substring(0,2).toUpperCase();
+  await buildWBar();
+  loadWJ();
+  popS();
+  checkJ();
+  loadWorkerAlerts();
+  // Check alerts every 60 seconds
+  setInterval(()=>{loadWorkerAlerts();checkNewAlertsForWorker();},60000);
+}
+
+async function loadWorkerAlerts(){
+  try{
+    const snap=await getDocs(query(collection(db,'alerts'),where('done','==',false)));
+    const box=document.getElementById('w-alerts-box');
+    const el=document.getElementById('w-alerts-list');
+    if(!box||!el)return;
+    if(snap.empty){box.style.display='none';return;}
+    box.style.display='block';
+    let h='';
+    snap.forEach(d=>{
+      const a=d.data();
+      const ic={obs:'👁️',riego:'💧',plantas:'🌱',piezas:'🔧',urgente:'🔴',otros:'🟢'}[a.type]||'🔔';
+      h+=`<div class="card" style="margin-bottom:8px;${a.type==='urgente'?'border-color:#dc2626;border-width:2px;':''}">
+        <div style="font-size:13px;font-weight:600">${ic} ${a.desc||''}</div>
+        ${a.clientName?`<div style="font-size:11px;color:#666;margin-top:3px">📍 ${a.clientName}</div>`:''}
+        ${a.date?`<div style="font-size:11px;color:#999;margin-top:2px">📅 ${a.date}</div>`:''}
+      </div>`;
+    });
+    el.innerHTML=h;
+  }catch(e){console.error(e);}
+}
+
+let lastWorkerAlertCount=0;
+async function checkNewAlertsForWorker(){
+  try{
+    const snap=await getDocs(query(collection(db,'alerts'),where('done','==',false)));
+    const count=snap.size;
+    if(count>lastWorkerAlertCount&&lastWorkerAlertCount>0){
+      sendLocalNotif('🔔 Rosell Jardineria - Admin','Tienes '+(count-lastWorkerAlertCount)+' mensaje'+(count-lastWorkerAlertCount>1?'s':'')+' nuevo'+(count-lastWorkerAlertCount>1?'s':''));
+      loadWorkerAlerts();
+    }
+    lastWorkerAlertCount=count;
+  }catch(e){}
+}
+async function buildWBar(){
+  const bar=document.getElementById('week-bar');if(!bar)return;
+  const today=new Date();
+  const days=['L','M','X','J','V','S','D'];
+  // Load events for next 14 days
+  const allDates=[];
+  for(let i=-1;i<14;i++){const d=new Date(today);d.setDate(today.getDate()+i);allDates.push(d.toISOString().split('T')[0]);}
+  const evCounts={};
+  try{
+    const snap=await getDocs(collection(db,'events'));
+    snap.forEach(d=>{const e=d.data();if(allDates.includes(e.date)&&!e.done){evCounts[e.date]=(evCounts[e.date]||0)+1;}});
+  }catch(er){}
+  bar.innerHTML='';
+  for(let i=-1;i<14;i++){
+    const d=new Date(today);d.setDate(today.getDate()+i);
+    const ds=d.toISOString().split('T')[0];
+    const isT=ds===today.toISOString().split('T')[0];
+    const isS=ds===selD;
+    const cnt=evCounts[ds]||0;
+    const dayName=days[(d.getDay()===0?6:d.getDay()-1)];
+    const btn=document.createElement('div');
+    btn.className='dbtn'+(isS?' act':isT?' tod':'');
+    btn.style.cssText='flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:7px 9px;border-radius:10px;cursor:pointer;min-width:44px;border:1.5px solid '+(isS?'var(--g)':isT?'var(--gm)':'var(--bo)')+';background:'+(isS?'var(--g)':isT?'var(--gl)':'#fff');
+    btn.innerHTML='<span style="font-size:10px;font-weight:600;color:'+(isS?'#fff':isT?'var(--g)':'#666')+'">'+dayName+'</span><span style="font-size:14px;font-weight:700;color:'+(isS?'#fff':isT?'var(--g)':'#1a1a1a')+'">'+d.getDate()+'</span>'+(cnt>0?'<span style="background:'+(isS?'rgba(255,255,255,0.3)':'#dc2626')+';color:#fff;border-radius:99px;font-size:9px;padding:1px 5px;margin-top:2px">'+cnt+'</span>':'');
+    btn.onclick=(ds=>(()=>{selD=ds;buildWBar();loadWJ();}))(ds);
+    bar.appendChild(btn);
+  }
+  // Scroll to today
+  setTimeout(()=>{const todayBtn=bar.querySelector('.tod,.act');if(todayBtn)todayBtn.scrollIntoView({block:'nearest',inline:'center'});},100);
+}
+async function loadWJ(){
+  let snap;
+  try{snap=await getDocs(query(collection(db,'events'),where('date','==',selD),orderBy('time','asc')));}
+  catch(e){
+    // Fallback without orderBy if index not ready
+    snap=await getDocs(query(collection(db,'events'),where('date','==',selD)));
+  }
+  wJobs=[];snap.forEach(d=>{wJobs.push({id:d.id,...d.data()});});const today=new Date().toISOString().split('T')[0];if(selD===today){const dow=new Date().getDay()===0?6:new Date().getDay()-1;const mon=new Date();mon.setDate(new Date().getDate()-dow);const ms=mon.toISOString().split('T')[0];if(ms<today){const past=await getDocs(query(collection(db,'events'),where('done','==',false)));past.forEach(d=>{const e={id:d.id,...d.data()};if(e.date&&e.date>=ms&&e.date<today){e._ov=true;wJobs.unshift(e);}});}}const dateO=new Date(selD+'T12:00:00');const isT=selD===new Date().toISOString().split('T')[0];const days=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];document.getElementById('w-dt').textContent=isT?`Hoy, ${dateO.toLocaleDateString('es-ES',{day:'numeric',month:'long'})}`:days[dateO.getDay()]+`, ${dateO.toLocaleDateString('es-ES',{day:'numeric',month:'short'})}`;const pe=wJobs.filter(j=>!j.done).length;document.getElementById('w-ds').textContent=`${wJobs.length} trabajos · ${pe} pendientes`;document.getElementById('w-dc').textContent=`${pe} pend.`;renderWJ();}
+function renderWJ(){const el=document.getElementById('w-jobs');const ic={maint:'🔧',extra:'⭐',otros:'🌳',visit:'🏠',call:'📞'};const lb={maint:'Mantenimiento',extra:'Extra',otros:'Otro',visit:'Visita',call:'Llamada'};const sorted=[...wJobs].sort((a,b)=>(!a.done&&b.done)?-1:(a.done&&!b.done)?1:0);let h='';let c=0;sorted.forEach(e=>{if(wJF==='maint'&&e.type!=='maint')return;if(wJF==='extra'&&e.type!=='extra')return;if(wJF==='otros'&&e.type!=='otros')return;if(wJF==='pending'&&e.done)return;if(wJF==='done'&&!e.done)return;c++;const ovT=e._ov?`<span class="badge" style="background:#fee2e2;color:#b91c1c;font-size:10px;margin-left:4px">⚠️ Atrasado</span>`:'';const ovD=e._ov&&e.date?`<div style="font-size:10px;color:#b91c1c;margin-top:2px">Del ${new Date(e.date+'T12:00').toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'short'})}</div>`:'';const wkKey='wk_'+e.id;
+    // Use localStorage as source of truth for button state
+    const lsStart=localStorage.getItem(wkKey);
+    const lsEnd=localStorage.getItem(wkKey+'_end');
+    // Fall back to Firebase data for display only
+    const wkStart=lsStart||(e.workStart||'');
+    const wkEnd=lsEnd||(e.workEnd||'');
+    const isStarted=!!lsStart; // Only localStorage determines button state
+    const isEnded=!!lsEnd;
+    h+=`<div class="jc" style="${e._ov?'border-color:#fecaca;border-width:2px;':''}">
+      <div class="jch">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:34px;height:34px;border-radius:10px;background:var(--gl);display:flex;align-items:center;justify-content:center;font-size:17px">${ic[e.type]||'📋'}</div>
+          <div style="flex:1">
+            <div style="font-size:14px;font-weight:600">${e.clientName||''}${ovT}</div>
+            <div style="font-size:11px;color:#666;margin-top:1px">${e.time?e.time+' · ':''}${lb[e.type]||e.type}</div>
+            ${ovD}
+            ${e.desc?`<div style="font-size:11px;color:#666;margin-top:2px">${e.desc}</div>`:''}
+            ${wkStart?`<div style="font-size:11px;margin-top:4px;padding:4px 8px;background:var(--gl);border-radius:6px;color:var(--g);font-weight:500">▶️ Inicio: ${wkStart}${wkEnd?' · ⏹️ Fin: '+wkEnd+' · ⏱️ '+calcDiff(wkStart,wkEnd):' · ⏳ En curso...'}</div>`:''}
+          </div>
+        </div>
+        ${e.done?'<span class="badge bok">✅</span>':'<span class="badge bpe">⏳</span>'}
+      </div>
+      ${!e.done?`<div class="jcb" style="display:flex;gap:6px;flex-wrap:wrap">
+        ${!isStarted?`<button class="btn bs" style="background:var(--gl);color:var(--g);border-color:var(--gm);flex:1;font-weight:600" onclick="startWork('${e.id}')">▶️ Iniciar trabajo</button>`
+        :isEnded?`<span class="badge bok" style="flex:1;padding:8px;font-size:12px">✅ ${wkStart} → ${wkEnd} (${calcDiff(wkStart,wkEnd)})</span>`
+        :`<button class="btn bs" style="background:#fee2e2;color:#b91c1c;border-color:#fecaca;flex:1;font-weight:600" onclick="endWork('${e.id}')">⏹️ Terminar trabajo</button>`}
+        <button class="btn bp bs" style="flex:2" onclick="goReg2('${e.clientId}','${e.type}','${e.id}')">📋 Registrar →</button>
+      </div>`:'<div class="jcb"><span style="font-size:12px;color:var(--g)">✅ Trabajo completado${e.workStart?" · ▶️ "+e.workStart:""} ${e.workEnd?"→ ⏹️ "+e.workEnd:""} ${e.workDuration?"("+e.workDuration+")":""}</span></div>'}
+    </div>`;});el.innerHTML=c?h:'<div class="empty">🌱<p>Sin trabajos este día 🎉</p></div>';}
+window._fWJ=window.fWJ=(f,btn)=>{wJF=f;document.querySelectorAll('#wt-t .pill').forEach(b=>b.classList.remove('on'));btn.classList.add('on');renderWJ();};
+// ============================================
+// WORK TIMER
+// ============================================
+function calcDiff(s,e){try{const [sh,sm]=s.split(':').map(Number);const [eh,em]=e.split(':').map(Number);const diff=(eh*60+em)-(sh*60+sm);return Math.floor(diff/60)+'h '+( diff%60)+'min';}catch{return '';}}
+window._startWork=window.startWork=async(evId)=>{
+  const now=new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+  localStorage.setItem('wk_'+evId,now);
+  // Save to Firebase
+  try{await updateDoc(doc(db,'events',evId),{workStart:now,workWorker:CU.email});}catch(e){}
+  renderWJ();showT('▶️ Trabajo iniciado a las '+now);
+};
+window._endWork=window.endWork=async(evId)=>{
+  const now=new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+  const start=localStorage.getItem('wk_'+evId)||'—';
+  localStorage.setItem('wk_'+evId+'_end',now);
+  // Save to Firebase
+  try{await updateDoc(doc(db,'events',evId),{workEnd:now,workDuration:calcDiff(start,now)});}catch(e){}
+  renderWJ();showT('⏹️ Terminado: '+start+' → '+now+' ('+calcDiff(start,now)+')');
+};
+
+// ============================================
+// PUSH NOTIFICATIONS
+// ============================================
+async function requestNotifPermission(){
+  if(!('Notification' in window))return;
+  if(Notification.permission==='default'){
+    const perm=await Notification.requestPermission();
+    if(perm==='granted')showT('🔔 Notificaciones activadas');
+  }
+}
+function sendLocalNotif(title,body){
+  if(Notification.permission==='granted'){
+    new Notification(title,{body,icon:'/favicon.ico'});
+  }
+}
+// Check for new alerts every 2 minutes and notify
+let lastAlertCount=0;
+async function checkNewAlerts(){
+  if(!CU)return;
+  try{
+    const snap=await getDocs(query(collection(db,'alerts'),where('done','==',false)));
+    const count=snap.size;
+    if(count>lastAlertCount&&lastAlertCount>0){
+      const diff=count-lastAlertCount;
+      sendLocalNotif('🔔 Rosell Jardineria',`Tienes ${diff} alerta${diff>1?'s':''} nueva${diff>1?'s':''}`);
+    }
+    lastAlertCount=count;
+    // Update badge
+    const b=document.getElementById('nc');
+    if(b){if(count>0){b.textContent=count;b.style.display='flex';}else b.style.display='none';}
+  }catch(e){}
+}
+setInterval(checkNewAlerts,120000); // Every 2 minutes
+
+window.goReg=(cid,type)=>{const s=document.getElementById('reg-c');if(s)s.value=cid;const t=document.getElementById('reg-t');if(t)t.value=type||'maint';wTab('r',document.querySelectorAll('#s-worker .tb')[1]);};
+// PHOTOS
+window._addP=window.addP=()=>document.getElementById('ph-inp').click();
+window._handleP=window.handleP=(e)=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=(ev)=>{photos.push(ev.target.result);renderP();};r.readAsDataURL(f);e.target.value='';};
+function renderP(){const g=document.getElementById('reg-photos');g.innerHTML='';photos.forEach((s,i)=>{g.innerHTML+=`<div class="pt"><img src="${s}"><button style="position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.5);color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:10px;cursor:pointer" onclick="delP(${i})">✕</button></div>`;});g.innerHTML+=`<div class="pa" onclick="addP()"><span style="font-size:22px;color:#ccc">📷</span><span>Añadir</span></div>`;}
+window._delP=window.delP=(i)=>{photos.splice(i,1);renderP();};
+// SAVE WORK
+window.currentEvId=null;
+window._goReg2=window.goReg2=(cid,type,evId)=>{
+  const s=document.getElementById('reg-c');if(s)s.value=cid;
+  const t=document.getElementById('reg-t');if(t)t.value=type||'maint';
+  window.currentEvId=evId||null;
+  // Show work times if available
+  if(evId){
+    const ws=localStorage.getItem('wk_'+evId);
+    const we=localStorage.getItem('wk_'+evId+'_end');
+    const box=document.getElementById('work-time-box');
+    if(box&&ws){
+      box.style.display='block';
+      const sd=document.getElementById('wt-start');if(sd)sd.textContent=ws;
+      const ed=document.getElementById('wt-end');if(ed)ed.textContent=we||'En curso...';
+      const dd=document.getElementById('wt-dur');if(dd)dd.textContent=ws&&we?calcDiff(ws,we):'--';
+    }
+  }
+  wTab('r',document.querySelectorAll('#s-worker .tb')[1]);
+};
+window._saveWork=window.saveWork=async()=>{
+  const cs=document.getElementById('reg-c');const cid=cs.value,cn=cs.options[cs.selectedIndex]?.text||'';
+  if(!cid){showT('Selecciona un cliente');return;}
+  const tasks=[];document.querySelectorAll('#reg-tasks .chi').forEach(item=>{if(item.querySelector('.chb')?.classList.contains('on')){const txt=item.querySelector('.cht')?.textContent||'';if(txt==='Otros'){const ov=document.getElementById('otros-txt')?.value?.trim();tasks.push(ov?'Otros: '+ov:'Otros');}else tasks.push(txt);}});
+  const buyArr=[];document.querySelectorAll('#buy-tasks .chi').forEach(item=>{if(item.querySelector('.chb')?.classList.contains('on')){const txt=item.querySelector('.cht')?.textContent||'';if(txt.includes('especificar')){const ov=document.getElementById('bo-txt')?.value?.trim();if(ov)buyArr.push('Otro: '+ov);}else buyArr.push(txt);}});
+  const who=[];Object.entries(ctrs).forEach(([k,v])=>{if(v>0){const n=k.replace(/_/g,' ');who.push(v>1?n+' ('+v+')':n);}});const nc=ctrs['nuevo']||0;if(nc>0){const nn=document.getElementById('nw-nm')?.value?.trim()||'Nuevo';who.push(nn+(nc>1?' ('+nc+')':''));}
+  const obs=document.getElementById('reg-obs')?.value||'';const mat=document.getElementById('reg-mat')?.value||'';const type=document.getElementById('reg-t')?.value||'maint';
+  if(!navigator.geolocation){await doSave(cid,cn,tasks,buyArr,who,obs,mat,type,window.currentEvId);}
+  else{navigator.geolocation.getCurrentPosition(async p=>{GPS=`${p.coords.latitude.toFixed(5)}, ${p.coords.longitude.toFixed(5)}`;await doSave(cid,cn,tasks,buyArr,who,obs,mat,type,window.currentEvId);},async()=>await doSave(cid,cn,tasks,buyArr,who,obs,mat,type,window.currentEvId));}
+};
+async function doSave(cid,cn,tasks,buyArr,who,obs,mat,type,evId=null){
+  const today=new Date().toISOString().split('T')[0];
+  // Get work timer info
+  let workStart='',workEnd='',workDur='';
+  if(evId){workStart=localStorage.getItem('wk_'+evId)||'';workEnd=localStorage.getItem('wk_'+evId+'_end')||'';if(workStart&&workEnd)workDur=calcDiff(workStart,workEnd);}
+  await addDoc(collection(db,'maints'),{clientId:cid,clientName:cn,date:today,worker:CU.email,workerName:CU.email,whoWorked:who.join(', '),type,tasks:tasks.join('\n'),buyItems:buyArr.join('\n'),obs,mat,workStart,workEnd,workDuration:workDur,gps:GPS||'',photos,done:true,createdAt:serverTimestamp()});
+  const evS=await getDocs(query(collection(db,'events'),where('clientId','==',cid),where('date','==',today),where('done','==',false)));
+  evS.forEach(async d=>{await updateDoc(doc(db,'events',d.id),{done:true});});
+  if(obs&&obs.trim())await addDoc(collection(db,'alerts'),{clientId:cid,clientName:cn,type:'obs',desc:'👁️ '+cn+': '+obs.substring(0,100),date:today,done:false,createdAt:serverTimestamp()});
+  if(mat&&mat.trim())await addDoc(collection(db,'alerts'),{clientId:cid,clientName:cn,type:'otros',desc:'📦 Material falta en '+cn+': '+mat.substring(0,80),date:today,done:false,createdAt:serverTimestamp()});
+  for(const item of buyArr){let at='otros';if(item.toLowerCase().includes('plantas'))at='plantas';else if(item.toLowerCase().includes('riego')||item.toLowerCase().includes('piezas'))at='riego';await addDoc(collection(db,'alerts'),{clientId:cid,clientName:cn,type:at,desc:cn+': '+item,date:today,done:false,createdAt:serverTimestamp()});}
+  const ac=buyArr.length+(obs?1:0)+(mat?1:0);
+  document.getElementById('ok-c').textContent=cn;document.getElementById('ok-i').textContent=today+' · '+tasks.length+' tareas · '+photos.length+' fotos'+(who.length?' · '+who.join(', '):'')+( workDur?' · ⏱️ '+workDur:'');document.getElementById('ok-a').textContent=ac>0?'✅ '+ac+' alerta'+(ac>1?'s':'')+' enviada'+(ac>1?'s':'')+' al admin':'';
+  document.querySelectorAll('#reg-tasks .chb,#buy-tasks .chb').forEach(c=>c.classList.remove('on'));
+  const ow=document.getElementById('otros-w');if(ow)ow.style.display='none';const ot=document.getElementById('otros-txt');if(ot)ot.value='';
+  const bow=document.getElementById('bo-w');if(bow)bow.style.display='none';const bot=document.getElementById('bo-txt');if(bot)bot.value='';
+  const ro=document.getElementById('reg-obs');if(ro)ro.value='';const rm=document.getElementById('reg-mat');if(rm)rm.value='';
+  Object.keys(ctrs).forEach(k=>{ctrs[k]=0;const el=document.getElementById('cnt-'+k);if(el)el.textContent='0';});
+  const nww=document.getElementById('nw-wrap');if(nww)nww.style.display='none';const nwn=document.getElementById('nw-nm');if(nwn)nwn.value='';if(window.currentEvId){localStorage.removeItem('wk_'+window.currentEvId);localStorage.removeItem('wk_'+window.currentEvId+'_end');window.currentEvId=null;}
+  photos=[];GPS=null;document.getElementById('reg-photos').innerHTML='<div class="pa" onclick="addP()"><span style="font-size:22px;color:#ccc">📷</span><span>Añadir</span></div>';
+  goS('s-ok');loadWJ();
+
+// ============================================
+// ADMIN - VER TRABAJOS DEL DÍA
+// ============================================
+let tjFilter='all';
+window._fTJ=window.fTJ=(f,btn)=>{tjFilter=f;document.querySelectorAll('#at-trabajos .pill').forEach(b=>b.classList.remove('on'));btn.classList.add('on');loadAdminTJ();};
+
+window.loadAdminTJ=async()=>{
+  const dateEl=document.getElementById('tj-date');
+  const date=dateEl?.value||new Date().toISOString().split('T')[0];
+  const el=document.getElementById('tj-list');
+  if(!el)return;
+  el.innerHTML='<div style="text-align:center;padding:20px;color:#666">Cargando...</div>';
+  
+  try{
+    // Load events for this date
+    const evSnap=await getDocs(query(collection(db,'events'),where('date','==',date)));
+    const mantSnap=await getDocs(query(collection(db,'maints'),where('date','==',date)));
+    
+    let h='';let cnt=0;
+    const ic={maint:'🔧',extra:'⭐',otros:'🌳',visit:'🏠',call:'📞'};
+    const lb={maint:'Mantenimiento',extra:'Extra',otros:'Otros',visit:'Visita',call:'Llamada'};
+    
+    // Show events (planned)
+    evSnap.forEach(d=>{
+      const e=d.data();
+      if(tjFilter==='done'&&!e.done)return;
+      if(tjFilter==='pending'&&e.done)return;
+      if(tjFilter==='maint'&&e.type!=='maint')return;
+      if(tjFilter==='extra'&&e.type!=='extra')return;
+      if(tjFilter==='otros'&&e.type!=='otros')return;
+      cnt++;
+      
+      // Find matching maint report
+      let mantReport=null;
+      mantSnap.forEach(m=>{if(m.data().clientId===e.clientId)mantReport=m.data();});
+      
+      h+=`<div class="card" style="margin-bottom:10px;border-left:4px solid ${e.done?'#22c55e':'#f59e0b'}">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <div>
+            <div style="font-size:14px;font-weight:700">${e.clientName||''}</div>
+            <div style="font-size:12px;color:#666">${ic[e.type]||'📋'} ${lb[e.type]||e.type} · ${e.time||''} ${e.worker?'· 👷 '+e.worker:''}</div>
+          </div>
+          <span class="badge ${e.done?'bok':'bpe'}">${e.done?'✅ Hecho':'⏳ Pendiente'}</span>
+        </div>
+        ${mantReport?`
+          ${mantReport.workStart?`<div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+            <div style="background:var(--gl);border-radius:8px;padding:6px 10px;flex:1;text-align:center">
+              <div style="font-size:10px;color:#666;font-weight:600">▶️ INICIO</div>
+              <div style="font-size:16px;font-weight:700;color:var(--g)">${mantReport.workStart}</div>
+            </div>
+            ${mantReport.workEnd?`<div style="background:#fee2e2;border-radius:8px;padding:6px 10px;flex:1;text-align:center">
+              <div style="font-size:10px;color:#666;font-weight:600">⏹️ FIN</div>
+              <div style="font-size:16px;font-weight:700;color:#b91c1c">${mantReport.workEnd}</div>
+            </div>`:''}
+            ${mantReport.workDuration?`<div style="background:#dbeafe;border-radius:8px;padding:6px 10px;flex:1;text-align:center">
+              <div style="font-size:10px;color:#666;font-weight:600">⏱️ TOTAL</div>
+              <div style="font-size:16px;font-weight:700;color:#1e40af">${mantReport.workDuration}</div>
+            </div>`:''}
+          </div>`:''}
+          ${mantReport.whoWorked?`<div style="font-size:12px;color:#666;margin-bottom:4px">👥 ${mantReport.whoWorked}</div>`:''}
+          ${mantReport.tasks?`<div style="font-size:12px;margin-bottom:4px"><span style="font-weight:600">Trabajos:</span> ${mantReport.tasks.replace(/
+/g,' · ')}</div>`:''}
+          ${mantReport.obs?`<div style="background:#fff5f5;border-radius:8px;padding:8px;margin-top:6px;border-left:3px solid #dc2626">
+            <div style="font-size:11px;font-weight:700;color:#dc2626;margin-bottom:2px">👁️ OBSERVACIONES</div>
+            <div style="font-size:13px">${mantReport.obs}</div>
+          </div>`:''}
+          ${mantReport.buyItems?`<div style="background:#FFFBEB;border-radius:8px;padding:8px;margin-top:6px;border-left:3px solid #f59e0b">
+            <div style="font-size:11px;font-weight:700;color:#92400E;margin-bottom:2px">⚠️ PENDIENTE COMPRAR</div>
+            <div style="font-size:13px;color:#92400E">${mantReport.buyItems.replace(/
+/g,' · ')}</div>
+          </div>`:''}
+        `:`<div style="font-size:12px;color:#999;font-style:italic">Sin registro del trabajador aún</div>`}
+        ${!e.done?`<button class="btn bs" style="background:var(--gl);color:var(--g);margin-top:8px" onclick="markED('${d.id}')">✅ Marcar como hecho</button>`:''}
+      </div>`;
+    });
+    
+    el.innerHTML=cnt?h:`<div class="empty">📋<p>No hay trabajos programados para ${date}</p></div>`;
+  }catch(err){
+    el.innerHTML='<div class="empty">❌<p>Error cargando trabajos</p></div>';
+    console.error(err);
+  }
+};
+
+}
+</script>
+
+
+</body></html>
